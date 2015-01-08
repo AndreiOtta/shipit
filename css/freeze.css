@@ -1157,6 +1157,62 @@ header h6 {
   border-left-style: groove;
   border-bottom-style: groove;
 }
+#ideas {
+  height: 960px;
+}
+#ideas .list {
+border: 3px solid #09b;
+border-radius: 50px;
+}
+#ideas .media {
+  margin-top: 50px;
+}
+#ideas ul li {
+  list-style-type: none;
+}
+#ideas .button-bar ul li {
+  margin-bottom: 50px;
+}
+#ideas .list ul {
+  padding: 0 10px;
+  margin: 25px 0;
+  height: 600px;
+  overflow: auto;
+}
+#ideas .list ul li {
+  padding: 30px;
+  color: #FFF;
+  border-radius: 30px;
+  background-color: #09B;
+  background-image: url("/img/minion_team.png");
+  background-position: 144.5%;
+  background-size: 35%;
+  background-repeat: no-repeat;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+#ideas .list ul li.selected {
+  background-color: #66cdcc;
+  font-weight: bold;
+}
+#ideas .list ul li.m7{
+  background-position: right;
+}
+#ideas .list ul li.m6{
+  background-position: 107%;
+}
+#ideas .list ul li.m5{
+  background-position: 114.7%;
+}
+#ideas .list ul li.m4{
+  background-position: 121.7%;
+}
+#ideas .list ul li.m3{
+  background-position: 128.8%;
+}
+#ideas .list ul li.m2{
+  background-position: 135.7%;
+}
 @media screen and (max-width: 640px) {
   header h1 {
     font-size:50px;
