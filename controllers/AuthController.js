@@ -1,56 +1,120 @@
-shipitapp.controller('AuthController', function($scope, $http, $location, CurrentUser){
-	$scope.errorMsg = '';
+shipitapp.controller('AuthController', function($scope, $http, $location, $cookies, CurrentUser){
+	init();
 
-	$scope.login = function (email, password) {
-		$http.post('http://shipit.tavara.ro/api/auth', { email: email, password: password })
+	function init(){
+		clearScope();
+		if ($location.path().indexOf('/changepass') >= 0 && !CurrentUser.isLoggedIn()) {
+			$location.path('/login');
+		};
+	}
+
+	function clearScope(){
+		$scope.loginModel = {};
+		$scope.registerModel = {};
+		$scope.changepassModel = {};
+		$scope.errorMsg = '';
+	}
+
+	$scope.goto_home = function() {
+		$location.path('/');
+	}
+
+	$scope.goto_register = function() {
+		$location.path('/register');
+	}
+
+	$scope.goto_changepass = function() {
+		$location.path('/changepass');
+	}
+
+	$scope.login = function () {
+		$http.post('http://shipit.tavara.ro/api/auth', { email: $scope.loginModel.email, password: $scope.loginModel.pass })
 		.success(function(data) {
-			CurrentUser.setCurrentUser(data, email);
-			$location.path('/');
+			if (data > 0) {
+				CurrentUser.setCurrentUser(data, $scope.loginModel.email);
+				$cookies.LoggedUserId = data;
+				$cookies.LoggedUserEmail = $scope.loginModel.email;
+				clearScope();
+				$scope.goto_home();
+			}
+			else {
+				$scope.errorMsg = 'Incorrect email address or password';
+				$scope.loginModel.pass = '';
+			}
 		})
 		.error(function(error) {
 			CurrentUser.clearCurrentUser();
 			$scope.errorMsg = error;
+			$scope.loginModel.pass = '';
 		});
 	}
 
-	$scope.register = function (name, email, password, confirmPassword) {
-		if (password.trim() != '' && password === confirmPassword) {
-			$http.post('http://shipit.tavara.ro/api/users', { name: name, email: email, password: password })
+	$scope.register = function () {
+		if (!$scope.registerModel.name || $scope.registerModel.name.trim() === '' || $scope.registerModel.name.length < 3) {
+			$scope.errorMsg = 'Please provide a longer name';
+			return;
+		};
+		if (!$scope.registerModel.email || $scope.registerModel.email.trim() === '') {
+			$scope.errorMsg = 'Please provide an email address';
+			return;
+		};
+		if (!$scope.registerModel.pass || $scope.registerModel.pass.trim() == '' || $scope.registerModel.pass.length < 3) {
+			$scope.errorMsg = 'Please provide a longer password';
+			return;
+		};
+		if ($scope.registerModel.pass === $scope.registerModel.confirm) {
+			$http.post('http://shipit.tavara.ro/api/users', { name: $scope.registerModel.name, email: $scope.registerModel.email, password: $scope.registerModel.pass })
 			.success(function(data){
-				CurrentUser.setCurrentUser(data, email);
-				$location.path('/');
+				if (data > 0) {
+					CurrentUser.setCurrentUser(data, $scope.registerModel.email);
+					clearScope();
+					$scope.goto_home();
+				}
+				else {
+					$scope.errorMsg = 'Email address already registered';
+					$scope.registerModel.pass = $scope.registerModel.confirm = '';
+				}
 			})
 			.error(function(error){
 				$scope.errorMsg = error;
+				$scope.registerModel = {};
 			})
 		} 
 		else {
-			$scope.errorMsg = "Password error!";
+			$scope.errorMsg = "Passwords do not match";
+			$scope.registerModel.pass = $scope.registerModel.confirm = '';
 		};
 	}
 
-	$scope.changePassword = function (oldPassword, newPassword, confirmPassword) {
-		if (oldPassword != newPassword && newPassword.trim() != '' && newPassword === confirmPassword) {
+	$scope.changePassword = function () {
+		if (!$scope.changepassModel.newpass || $scope.changepassModel.newpass.length < 3) {
+			$scope.errorMsg = 'Please provide a longer password';
+			return;
+		};
+		if ($scope.changepassModel.newpass && $scope.changepassModel.newpass.trim() != '' && $scope.changepassModel.newpass === $scope.changepassModel.confirm) {
 			$http.get('http://shipit.tavara.ro/api/users/' + CurrentUser.id)
 			.success(function(data){
 				var user = data;
 				if (user) {
-					$http.put('http://shipit.tavara.ro/api/users', { name: user.name, email: user.email, password: newPassword })
+					$http.put('http://shipit.tavara.ro/api/users/' + user.Id, { Id: user.Id, name: user.Name, email: user.Email, password: $scope.changepassModel.newpass })
 					.success(function(data){
-						CurrentUser.setCurrentUser(data, user.email);
-						$location.path('/');
+						clearScope();
+						$scope.goto_home();
 					})
 					.error(function(error){
 						$scope.errorMsg = error;
+						$scope.changepassModel = {};
 					});
 				};
 			})
 			.error(function(error){
 				$scope.errorMsg = error;
+				$scope.changepassModel = {};
 			});
 		} 
 		else {
 			$scope.errorMsg = "Password error!";
+			$scope.changepassModel = {};
 		};
 	}
 });

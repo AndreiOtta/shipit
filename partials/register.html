@@ -1,23 +1,30 @@
+<div class="section-heading">
+    <h1>Register</h1>
+    <div class="divider"></div>
+</div>
 <div class="row">
     <div class="col-md-12">
-        <div class="row" style="text-align: center;">
+        <div class="row" style="text-align: center; margin-top:7em">
             <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3">
-            	<form role="form">
+            	<form role="form" data-ng-enter="register()">
             		<div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your name">
+                        <input type="text" class="form-control" placeholder="Your name" data-ng-model="registerModel.name">
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Your email address">
+                        <input type="email" class="form-control" placeholder="Your email address" data-ng-model="registerModel.email">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Your password">
+                        <input type="password" class="form-control" placeholder="Your password" data-ng-model="registerModel.pass">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Confirm password">
+                        <input type="password" class="form-control" placeholder="Confirm password" data-ng-model="registerModel.confirm">
                     </div>
-                    <button class="btn btn-primary btn-lg"><i class="fa fa-arrow-left"></i>&nbsp;Back</button>
-                    <button type="submit" class="btn btn-primary btn-lg">Register me</button>
+                    <button class="btn btn-primary btn-lg" data-ng-click="goto_home()"><i class="fa fa-arrow-left"></i>&nbsp;Back to ideas</button>
+                    <button type="submit" class="btn btn-primary btn-lg" data-ng-click="register()">Register me</button>
                 </form>
+                <div class="media">
+                    <span class="error">{{ errorMsg }}</span>
+                </div>
             </div>
         </div>
     </div>

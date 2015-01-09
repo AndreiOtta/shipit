@@ -1158,11 +1158,7 @@ header h6 {
   border-bottom-style: groove;
 }
 #ideas {
-  height: 960px;
-}
-#ideas .list {
-border: 3px solid #09b;
-border-radius: 50px;
+  min-height: 960px;
 }
 #ideas .media {
   margin-top: 50px;
@@ -1170,8 +1166,16 @@ border-radius: 50px;
 #ideas ul li {
   list-style-type: none;
 }
+/*idea list*/
+#ideas .button-bar ul {
+  padding: 0;
+}
 #ideas .button-bar ul li {
   margin-bottom: 50px;
+}
+#ideas .list {
+border: 3px solid #09b;
+border-radius: 50px;
 }
 #ideas .list ul {
   padding: 0 10px;
@@ -1185,11 +1189,21 @@ border-radius: 50px;
   border-radius: 30px;
   background-color: #09B;
   background-image: url("/img/minion_team.png");
-  background-position: 144.5%;
+  background-position: 200%;
   background-size: 35%;
   background-repeat: no-repeat;
   margin-bottom: 10px;
   font-size: 22px;
+}
+#ideas .backer.list ul {
+  height: initial;
+  max-height: 600px;
+  min-height: 100px;
+}
+#ideas .list ul li:hover {
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #66cdcc;
 }
 #ideas .list ul li.selected {
   background-color: #66cdcc;
@@ -1199,7 +1213,7 @@ border-radius: 50px;
   background-position: right;
 }
 #ideas .list ul li.m6{
-  background-position: 107%;
+  background-position: 106.8%;
 }
 #ideas .list ul li.m5{
   background-position: 114.7%;
@@ -1211,7 +1225,14 @@ border-radius: 50px;
   background-position: 128.8%;
 }
 #ideas .list ul li.m2{
-  background-position: 135.7%;
+  background-position: 135.9%;
+}
+#ideas .list ul li.m1{
+  background-position: 144.6%;
+}
+/*auth area*/
+#ideas .error {
+  color: #F00;
 }
 @media screen and (max-width: 640px) {
   header h1 {
@@ -1256,5 +1277,8 @@ border-radius: 50px;
   #event .row{
     margin-top:0em;
     margin-bottom:0em;
+  }
+  #ideas .list ul li {
+    background-image: none;
   }
 }

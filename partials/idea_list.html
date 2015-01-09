@@ -1,27 +1,44 @@
-{{ User }}
+<div class="section-heading">
+    <h1>Submitted ideas</h1>
+    <div class="divider"></div>
+</div>
 <div class="row">
-	<div class="col-xs-9 col-sm-9 col-md-10 col-lg-10 list">
+	<div class="col-xs-7 col-sm-9 col-md-10 col-lg-10 list">
 		<ul>
-			<li data-ng-repeat="idea in ideas | orderBy:'Id'">
-				<div>{{ idea.Name }}</div>
+			<li data-ng-repeat="idea in ideas | orderBy:'Id'" class="m{{ getMemberCount(idea) }}" data-ng-class="idea.selected ? 'selected' : ''" data-ng-click="selectIdea(idea)">
+				<div style="word-wrap:break-word;">{{ idea.Name }}</div>
 			</li>
 		</ul>
 	</div>
-	<div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 button-bar">
+	<div class="col-xs-5 col-sm-3 col-md-2 col-lg-2 button-bar">
 		<ul>
 			<li>
-				<button data-ng-click="addIdea()" class="btn btn-primary btn-lg">New Idea</button>
+				<button data-ng-click="goto_addIdea()" class="btn btn-primary btn-lg">New Idea</button>
 			</li>
-			<li>
-				<button data-ng-click="addIdea()" class="btn btn-primary btn-lg">View Idea</button>
+			<li data-ng-show="selectedIdea">
+				<button data-ng-click="goto_viewIdea()" class="btn btn-primary btn-lg">View Idea</button>
+			</li>			
+			<li data-ng-show="selectedIdea">
+				<button data-ng-click="goto_changeIdea()" class="btn btn-primary btn-lg">Change Idea</button>
 			</li>
-			<li>
-				<button data-ng-click="addIdea()" class="btn btn-primary btn-lg">Join Team</button>
+			<li data-ng-show="selectedIdea">
+				<button data-ng-click="joinTeam()" class="btn btn-primary btn-lg">Join Team</button>
 			</li>
-			<li>
-				<button data-ng-click="addIdea()" class="btn btn-primary btn-lg">Leave Team</button>
+			<li data-ng-show="selectedIdea">
+				<button data-ng-click="leaveTeam()" class="btn btn-primary btn-lg">Leave Team</button>
 			</li>
-		</ul>
+			<li data-ng-show="UserLoggedIn">
+				<span>Logged in as:</span>
+				<h4 style="word-wrap: break-word; margin-bottom:0;">{{ User }}</h4>
+				<h4 style="word-wrap: break-word; margin-top:0;">{{ Domain }}</h4>
+				<button class="btn btn-primary btn-lg" data-ng-click="goto_changepass()">Change Pass</button>
+				<button class="btn btn-primary btn-lg" data-ng-click="logout()" style="margin-top:5px">Log out</button>
+			</li>
 		</ul>
 	</div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <span class="error">{{ errorMsg }}</span>
+    </div>
 </div>

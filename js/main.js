@@ -1,4 +1,4 @@
-var shipitapp = angular.module("shipit", ['ngRoute']);
+var shipitapp = angular.module("shipit", ['ngRoute', 'ngCookies']);
 
 shipitapp.config(function ($routeProvider){
 	$routeProvider
@@ -22,25 +22,20 @@ shipitapp.config(function ($routeProvider){
 			controller: 'AuthController',
 			templateUrl: '/partials/changepass.html'
 		})
-		.when('/ideas/:ideaID',
+		.when('/ideas/view/:ideaID',
 		{
-			controller: 'IdeaListController',
+			controller: 'IdeaController',
 			templateUrl: '/partials/idea_view.html'
 		})
 		.when('/ideas/submit',
 		{
-			controller: 'IdeaListController',
+			controller: 'IdeaController',
 			templateUrl: '/partials/idea_form.html'
 		})
 		.when('/ideas/change/:ideaID',
 		{
-			controller: 'IdeaListController',
+			controller: 'IdeaController',
 			templateUrl: '/partials/idea_form.html'
-		})
-		.when('/ideas/withdraw/:ideaID',
-		{
-			controller: 'IdeaListController',
-			templateUrl: '/partials/idea_remove.html'
 		})
 		.otherwise({ redirectTo: '/' });
 });
@@ -58,8 +53,22 @@ shipitapp.factory('CurrentUser', function(){
 	}
 
 	currentUser.isLoggedIn = function() {
-		return currentUser.id != undefined;
+		return currentUser.id > 0;
 	}
 
 	return currentUser;
+});
+
+shipitapp.directive('ngEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.ngEnter);
+                });
+ 
+                event.preventDefault();
+            }
+        });
+    };
 });
