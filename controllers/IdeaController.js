@@ -94,10 +94,10 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 			$location.path('/login');
 		}
 		else {
-			/*if (!$scope.addIdeaModel.title || $scope.addIdeaModel.title.trim() === '' || $scope.addIdeaModel.title.length < 4) {
+			if (!$scope.addIdeaModel.title || $scope.addIdeaModel.title.trim() === '' || $scope.addIdeaModel.title.length < 4) {
 				$scope.errorMsg = 'Please provide a longer name for your idea';
 				return;
-			};*/
+			};
 			if ($scope.addIdeaModel.title && $scope.addIdeaModel.title.trim() != '') {
 				$http.post('http://shipit.tavara.ro/api/projects', { name: $scope.addIdeaModel.title, description: $scope.addIdeaModel.description, userID: CurrentUser.id })
 				.success(function(data){
