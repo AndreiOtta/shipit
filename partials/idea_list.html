@@ -5,7 +5,7 @@
 <div class="row">
 	<div class="col-xs-7 col-sm-9 col-md-10 col-lg-10 list">
 		<ul>
-			<li data-ng-repeat="idea in ideas | orderBy:'Id'" class="m{{ getMemberCount(idea) }}" data-ng-class="idea.selected ? 'selected' : ''" data-ng-click="selectIdea(idea)">
+			<li data-ng-repeat="idea in ideas | orderBy : 'Id' : true" class="m{{ getMemberCount(idea) }}" data-ng-class="idea.selected ? 'selected' : ''" data-ng-click="selectIdea(idea)">
 				<div style="word-wrap:break-word;">{{ idea.Name }}</div>
 			</li>
 		</ul>
