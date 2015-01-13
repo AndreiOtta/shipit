@@ -578,6 +578,10 @@ form .form-control {
   border: 2px solid #cccccc;
   font-weight: 300;
 }
+form input.form-control {
+    height: 45px;
+    padding: 0 20px;
+}
 form textarea.form-control {
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
