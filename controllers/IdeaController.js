@@ -78,6 +78,22 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 		}	
 	}
 
+	$scope.changeOwner = function(backer) {
+		if(!$scope.isCurrentUserOwner) {
+			$scope.goto_home();
+		}
+		else {
+			/*$http.put('http://shipit.tavara.ro/api/projectusers/' + backer.Id, { Id: backer.Id, IsOwner: true, IsMember: backer.IsMember, UserId: backer.UserId, ProjectId: backer.ProjectId })
+			.success(function(data){
+				backer.IsOwner = !backer.IsOwner;
+				$scope.errorMsg = '';
+			})
+			.error(function(error){
+				$scope.errorMsg = 'Error in changing membership';
+			});*/
+		}
+	}
+
 	$scope.getDescriptionHtml = function(description) {
 		return $sce.trustAsHtml(description);
 	}

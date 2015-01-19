@@ -7,6 +7,11 @@ shipitapp.config(function ($routeProvider){
 			controller: 'IdeaListController',
 			templateUrl: '/partials/idea_list.html'
 		})
+		.when('/help',
+		{
+			controller: 'IdeaListController',
+			templateUrl: '/partials/help.html'
+		})
 		.when('/login',
 		{
 			controller: 'AuthController',

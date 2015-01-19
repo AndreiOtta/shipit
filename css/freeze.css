@@ -1107,11 +1107,11 @@ header .navbar-default ul.navbar-nav li a.top {
 header .navbar-default.scrolled ul.navbar-nav li a.top {
   display:block;
 }
-#credits i.fa{
+#credits i.fa, #ideas i.fa{
   color:#09B;
 }
 #credits .media.feature{
-  margin: 2em 0;
+  margin: 1.5em 0;
 }
 #credits .tech-logo {
   width: 275px;
@@ -1120,9 +1120,6 @@ header .navbar-default.scrolled ul.navbar-nav li a.top {
   float: left;
   font-size: 2em;
   margin-top: 0.6em;
-}
-#credits .row.logos {
-  margin-top: 7em;
 }
 #event ul.event-how li {
   margin-top:1.25em;

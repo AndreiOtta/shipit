@@ -25,6 +25,14 @@ shipitapp.controller('IdeaListController', function($scope, $http, $location, $c
 		});
 	}
 
+	$scope.goto_help = function() {
+		$location.path('/help');
+	}
+
+	$scope.goto_home = function() {
+		$location.path('/');
+	}
+
 	$scope.getMemberCount = function(idea){
 		idea.ProjectUsers = idea.ProjectUsers || [];
 		return  idea.ProjectUsers.length <= 1 ? "1" : (idea.ProjectUsers.length >= 7 ? "7" : idea.ProjectUsers.length);
