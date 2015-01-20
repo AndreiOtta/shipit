@@ -18,7 +18,7 @@ shipitapp.controller('IdeaListController', function($scope, $http, $location, $c
 	};
 
 	function getIdeas() {
-		$http.get('http://shipit.tavara.ro/api/projects')
+		$http.get(server_name + 'projects')
 		.success(function(data){
 			$scope.ideas = data;
 			$scope.selectedIdea = null;
@@ -70,7 +70,7 @@ shipitapp.controller('IdeaListController', function($scope, $http, $location, $c
 				$scope.errorMsg = "You're already a member of the selected team";
 			}
 			else {
-				$http.post('http://shipit.tavara.ro/api/projectusers', { IsOwner: false, IsMember: false, UserId: CurrentUser.id, ProjectId: idea.Id })
+				$http.post(server_name + 'projectusers', { IsOwner: false, IsMember: false, UserId: CurrentUser.id, ProjectId: idea.Id })
 				.success(function(data){
 					if(data > 0) {
 						getIdeas();
@@ -104,7 +104,7 @@ shipitapp.controller('IdeaListController', function($scope, $http, $location, $c
 			}
 			else {
 				var projectUserId = $.grep(idea.ProjectUsers, function(user){ return user.UserId == CurrentUser.id})[0].Id;
-				$http.delete('http://shipit.tavara.ro/api/projectusers/'+ projectUserId)
+				$http.delete(server_name + 'projectusers/'+ projectUserId)
 				.success(function(data){
 					getIdeas();
 					$scope.errorMsg = '';

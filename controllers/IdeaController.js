@@ -25,7 +25,7 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 			};
 			
 			//get idea and bind it
-			$http.get('http://shipit.tavara.ro/api/projects/' + ideaID)
+			$http.get(server_name + 'projects/' + ideaID)
 			.success(function(data) {
 				$scope.selectedIdea = data;
 				if ($scope.inEditMode) {
@@ -62,12 +62,26 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 		$scope.errorMsg = '';
 	}
 
+	$scope.selectBacker = function(backer) {
+		if ($scope.inEditMode) {
+			if (!$scope.selectedBacker || $scope.selectedBacker.Id != backer.Id) {
+				angular.forEach($scope.changeIdeaModel.backers, function(item){
+					if (item.Id != backer.Id) {
+						item.selected = false;
+					};
+				});
+				$scope.selectedBacker = backer;
+			}
+			backer.selected = true;
+		};
+	}
+
 	$scope.changeMembership = function(backer) {
 		if(!$scope.isCurrentUserOwner) {
 			$scope.goto_home();
 		}
 		else {
-			$http.put('http://shipit.tavara.ro/api/projectusers/' + backer.Id, { Id: backer.Id, IsOwner: backer.IsOwner, IsMember: !backer.IsMember, UserId: backer.UserId, ProjectId: backer.ProjectId })
+			$http.put(server_name + 'projectusers/' + backer.Id, { Id: backer.Id, IsOwner: backer.IsOwner, IsMember: !backer.IsMember, UserId: backer.UserId, ProjectId: backer.ProjectId })
 			.success(function(data){
 				backer.IsMember = !backer.IsMember;
 				$scope.errorMsg = '';
@@ -83,7 +97,7 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 			$scope.goto_home();
 		}
 		else {
-			/*$http.put('http://shipit.tavara.ro/api/projectusers/' + backer.Id, { Id: backer.Id, IsOwner: true, IsMember: backer.IsMember, UserId: backer.UserId, ProjectId: backer.ProjectId })
+			/*$http.put(server_name + 'projectusers/' + backer.Id, { Id: backer.Id, IsOwner: true, IsMember: backer.IsMember, UserId: backer.UserId, ProjectId: backer.ProjectId })
 			.success(function(data){
 				backer.IsOwner = !backer.IsOwner;
 				$scope.errorMsg = '';
@@ -115,7 +129,7 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 				return;
 			};
 			if ($scope.addIdeaModel.title && $scope.addIdeaModel.title.trim() != '') {
-				$http.post('http://shipit.tavara.ro/api/projects', { name: $scope.addIdeaModel.title, description: $scope.addIdeaModel.description, userID: CurrentUser.id })
+				$http.post(server_name + 'projects', { name: $scope.addIdeaModel.title, description: $scope.addIdeaModel.description, userID: CurrentUser.id })
 				.success(function(data){
 					if (data > 0) {
 						clearScope();
@@ -152,7 +166,7 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 				$scope.selectedIdea.Description = $scope.changeIdeaModel.description;
 				$scope.selectedIdea.ProjectUsers = []; //to avoid a save trigger on the users
 
-				$http.put('http://shipit.tavara.ro/api/projects/' + $scope.selectedIdea.Id, $scope.selectedIdea)
+				$http.put(server_name + 'projects/' + $scope.selectedIdea.Id, $scope.selectedIdea)
 				.success(function(data){
 					clearScope();
 					$scope.goto_home();

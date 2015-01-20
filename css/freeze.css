@@ -1107,7 +1107,7 @@ header .navbar-default ul.navbar-nav li a.top {
 header .navbar-default.scrolled ul.navbar-nav li a.top {
   display:block;
 }
-#credits i.fa, #ideas i.fa{
+#credits i.fa, #agenda i.fa, #ideas i.fa.blue{
   color:#09B;
 }
 #credits .media.feature{
@@ -1206,7 +1206,8 @@ border-radius: 50px;
   font-weight: bold;
   background-color: #66cdcc;
 }
-#ideas .list ul li.selected {
+#ideas .list ul li.selected,
+#ideas ul.backer-list li.selected {
   background-color: #66cdcc;
   font-weight: bold;
 }

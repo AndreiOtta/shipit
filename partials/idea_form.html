@@ -15,6 +15,7 @@
                     </div>
                     <button class="btn btn-primary btn-lg" data-ng-click="goto_home()"><i class="fa fa-arrow-left"></i>&nbsp;Back to ideas</button>
                     <button type="submit" class="btn btn-primary btn-lg" data-ng-click="saveIdea()"><i class="fa {{ inEditMode && 'fa-save' || 'fa-rocket' }}"></i>&nbsp;{{ inEditMode && 'Save idea' || 'Submit idea' }}</button>
+                    <button class="btn btn-primary btn-lg" data-ng-if="inEditMode" data-ng-click="changeOwner()">Transfer Ownership</button>
                 </form>
                 <div class="media">
                     <span class="error">{{ errorMsg }}</span>
@@ -28,11 +29,12 @@
 		<h3>Backers</h3>
 	</div>
 	<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 backer list">
-		<ul>
-			<li data-ng-repeat="backer in formModel.backers | orderBy:'Id'">
+		<ul class="backer-list">
+			<li data-ng-repeat="backer in formModel.backers | orderBy:'Id'" data-ng-class="backer.selected ? 'selected' : ''" data-ng-click="selectBacker(backer)">
 				<div class="row">
 					<span style="word-wrap:break-word;">{{ backer.User.Name }}</span>
-					<span data-ng-click="changeMembership(backer)" class="pull-right" style="cursor:pointer;"><i class="fa {{ backer.IsMember && 'fa-times-circle-o' || 'fa-check-circle-o' }}"></i>&nbsp;{{ backer.IsMember && 'Unpick' || 'Pick' }}</span>
+					<span data-ng-click="changeMembership(backer);$event.stopPropagation();" class="pull-right" style="cursor:pointer;"><i class="fa {{ backer.IsMember && 'fa-times-circle-o' || 'fa-check-circle-o' }}"></i>&nbsp;{{ backer.IsMember && 'Unpick' || 'Pick' }}</span>
+				</div>
 			</li>
 		</ul>
 	</div>
@@ -53,8 +55,8 @@
 	        <div class="media-body">
 	            <h3 class="media-heading">Andrei Otta</h3>
 	            <h5>
-	                <a href="skype:andrei.otta?chat"><i class="fa fa-skype fa-4x"></i></a>
-	                <a href="mailto:andrei.otta@accesa.eu"><i class="fa fa-envelope fa-4x"></i></a>
+	                <a href="skype:andrei.otta?chat"><i class="fa blue fa-skype fa-4x"></i></a>
+	                <a href="mailto:andrei.otta@accesa.eu"><i class="fa blue fa-envelope fa-4x"></i></a>
 	            </h5>
 	        </div>
 	    </div>
@@ -64,8 +66,8 @@
 	        <div class="media-body">
 	            <h3 class="media-heading">Diana T</h3>
 	            <h5>
-	                <a href="skype:dianatrnvn?chat"><i class="fa fa-skype fa-4x"></i></a>
-	                <a href="mailto:diana.tirnovan@accesa.eu"><i class="fa fa-envelope fa-4x"></i></a>
+	                <a href="skype:dianatrnvn?chat"><i class="fa blue fa-skype fa-4x"></i></a>
+	                <a href="mailto:diana.tirnovan@accesa.eu"><i class="fa blue fa-envelope fa-4x"></i></a>
 	            </h5>
 	        </div>
 	    </div>

@@ -28,7 +28,7 @@ shipitapp.controller('AuthController', function($scope, $http, $location, $cooki
 	}
 
 	$scope.login = function () {
-		$http.post('http://shipit.tavara.ro/api/auth', { email: $scope.loginModel.email, password: $scope.loginModel.pass })
+		$http.post(server_name + 'auth', { email: $scope.loginModel.email, password: $scope.loginModel.pass })
 		.success(function(data) {
 			if (data > 0) {
 				CurrentUser.setCurrentUser(data, $scope.loginModel.email);
@@ -63,7 +63,7 @@ shipitapp.controller('AuthController', function($scope, $http, $location, $cooki
 			return;
 		};
 		if ($scope.registerModel.pass === $scope.registerModel.confirm) {
-			$http.post('http://shipit.tavara.ro/api/users', { name: $scope.registerModel.name, email: $scope.registerModel.email, password: $scope.registerModel.pass })
+			$http.post(server_name + 'users', { name: $scope.registerModel.name, email: $scope.registerModel.email, password: $scope.registerModel.pass })
 			.success(function(data){
 				if (data > 0) {
 					CurrentUser.setCurrentUser(data, $scope.registerModel.email);
@@ -92,11 +92,11 @@ shipitapp.controller('AuthController', function($scope, $http, $location, $cooki
 			return;
 		};
 		if ($scope.changepassModel.newpass && $scope.changepassModel.newpass.trim() != '' && $scope.changepassModel.newpass === $scope.changepassModel.confirm) {
-			$http.get('http://shipit.tavara.ro/api/users/' + CurrentUser.id)
+			$http.get(server_name + 'users/' + CurrentUser.id)
 			.success(function(data){
 				var user = data;
 				if (user) {
-					$http.put('http://shipit.tavara.ro/api/users/' + user.Id, { Id: user.Id, name: user.Name, email: user.Email, password: $scope.changepassModel.newpass })
+					$http.put(server_name + 'users/' + user.Id, { Id: user.Id, name: user.Name, email: user.Email, password: $scope.changepassModel.newpass })
 					.success(function(data){
 						clearScope();
 						$scope.goto_home();
