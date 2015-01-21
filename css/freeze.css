@@ -1107,7 +1107,7 @@ header .navbar-default ul.navbar-nav li a.top {
 header .navbar-default.scrolled ul.navbar-nav li a.top {
   display:block;
 }
-#credits i.fa, #agenda i.fa, #ideas i.fa.blue{
+#credits i.fa, #agenda i.fa, #event i.fa, #ideas i.fa.blue{
   color:#09B;
 }
 #credits .media.feature{
@@ -1124,8 +1124,7 @@ header .navbar-default.scrolled ul.navbar-nav li a.top {
 #event ul.event-how li {
   margin-top:1.25em;
 }
-#event .row{
-  margin-top:10em;
+#event .row.main{
   margin-bottom:10em;
 }
 header h1,header h2,header h3,header h4,header h5,header h6,
