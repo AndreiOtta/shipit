@@ -15,7 +15,7 @@
                     </div>
                     <button class="btn btn-primary btn-lg" data-ng-click="goto_home()"><i class="fa fa-arrow-left"></i>&nbsp;Back to ideas</button>
                     <button type="submit" class="btn btn-primary btn-lg" data-ng-click="saveIdea()"><i class="fa {{ inEditMode && 'fa-save' || 'fa-rocket' }}"></i>&nbsp;{{ inEditMode && 'Save idea' || 'Submit idea' }}</button>
-                    <button class="btn btn-primary btn-lg" data-ng-if="inEditMode" data-ng-click="changeOwner()">Transfer Ownership</button>
+                    <button class="btn btn-primary btn-lg" data-ng-if="inEditMode" data-ng-show="selectedBacker" data-ng-click="changeOwner()">Transfer Ownership</button>
                 </form>
                 <div class="media">
                     <span class="error">{{ errorMsg }}</span>

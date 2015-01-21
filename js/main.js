@@ -1,5 +1,5 @@
 var shipitapp = angular.module("shipit", ['ngRoute', 'ngCookies']);
-var server_name = "http://shipit.tavara.ro/api/";
+var server_name = "http://shipit.tavara.ro/api";
 
 shipitapp.config(function ($routeProvider){
 	$routeProvider
@@ -55,7 +55,8 @@ shipitapp.factory('CurrentUser', function(){
 	};
 
 	currentUser.clearCurrentUser = function(){
-		currentUser = {};
+		currentUser.id = null;
+		currentUser.email = null;
 	}
 
 	currentUser.isLoggedIn = function() {

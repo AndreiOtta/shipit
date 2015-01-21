@@ -25,9 +25,10 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 			};
 			
 			//get idea and bind it
-			$http.get(server_name + 'projects/' + ideaID)
+			$http.get(server_name + '/projects/' + ideaID)
 			.success(function(data) {
 				$scope.selectedIdea = data;
+				$scope.owner = $.grep(data.ProjectUsers, function(user) { return user.IsOwner })[0];
 				if ($scope.inEditMode) {
 					$scope.changeIdeaModel.title = data.Name;
 					$scope.changeIdeaModel.description = data.Description;
@@ -81,7 +82,7 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 			$scope.goto_home();
 		}
 		else {
-			$http.put(server_name + 'projectusers/' + backer.Id, { Id: backer.Id, IsOwner: backer.IsOwner, IsMember: !backer.IsMember, UserId: backer.UserId, ProjectId: backer.ProjectId })
+			$http.put(server_name + '/projectusers/' + backer.Id, { Id: backer.Id, IsOwner: backer.IsOwner, IsMember: !backer.IsMember, UserId: backer.UserId, ProjectId: backer.ProjectId })
 			.success(function(data){
 				backer.IsMember = !backer.IsMember;
 				$scope.errorMsg = '';
@@ -92,19 +93,24 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 		}	
 	}
 
-	$scope.changeOwner = function(backer) {
+	$scope.changeOwner = function() {
 		if(!$scope.isCurrentUserOwner) {
 			$scope.goto_home();
 		}
 		else {
-			/*$http.put(server_name + 'projectusers/' + backer.Id, { Id: backer.Id, IsOwner: true, IsMember: backer.IsMember, UserId: backer.UserId, ProjectId: backer.ProjectId })
+			$http.put(server_name + '/projectusers/' + $scope.selectedBacker.Id, { Id: $scope.selectedBacker.Id, IsOwner: true, IsMember: $scope.selectedBacker.IsMember, UserId: $scope.selectedBacker.UserId, ProjectId: $scope.selectedBacker.ProjectId })
 			.success(function(data){
-				backer.IsOwner = !backer.IsOwner;
-				$scope.errorMsg = '';
+				$http.put(server_name + '/projectusers/' + $scope.owner.Id, { Id: $scope.owner.Id, IsOwner: false, IsMember: $scope.owner.IsMember, UserId: $scope.owner.UserId, ProjectId: $scope.owner.ProjectId })
+				.success(function(data){
+					init();
+				})
+				.error(function(error){
+					$scope.errorMsg = 'Error in changing owner';
+				})
 			})
 			.error(function(error){
-				$scope.errorMsg = 'Error in changing membership';
-			});*/
+				$scope.errorMsg = 'Error in changing owner';
+			});
 		}
 	}
 
@@ -129,7 +135,7 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 				return;
 			};
 			if ($scope.addIdeaModel.title && $scope.addIdeaModel.title.trim() != '') {
-				$http.post(server_name + 'projects', { name: $scope.addIdeaModel.title, description: $scope.addIdeaModel.description, userID: CurrentUser.id })
+				$http.post(server_name + '/projects', { name: $scope.addIdeaModel.title, description: $scope.addIdeaModel.description, userID: CurrentUser.id })
 				.success(function(data){
 					if (data > 0) {
 						clearScope();
@@ -166,7 +172,7 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 				$scope.selectedIdea.Description = $scope.changeIdeaModel.description;
 				$scope.selectedIdea.ProjectUsers = []; //to avoid a save trigger on the users
 
-				$http.put(server_name + 'projects/' + $scope.selectedIdea.Id, $scope.selectedIdea)
+				$http.put(server_name + '/projects/' + $scope.selectedIdea.Id, $scope.selectedIdea)
 				.success(function(data){
 					clearScope();
 					$scope.goto_home();
