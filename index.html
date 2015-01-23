@@ -660,9 +660,41 @@
                 ,autoStart: false
                 ,showSeconds: false
             });
-            clock.setTime(Math.floor(((new Date(2015, 0, 23, 13)).getTime() - (new Date()).getTime())/1000));
+            
+            var time = 0;
+            var timeToShipItStart = Math.floor(((new Date(2015, 0, 23, 13)).getTime() - (new Date()).getTime())/1000);
+            var timeToShipItEnd = Math.floor(((new Date(2015, 0, 24, 13)).getTime() - (new Date()).getTime())/1000);
+            if (timeToShipItStart > 0) {
+                time = timeToShipItStart;
+            }
+            else if (timeToShipItEnd > 0)
+            {
+                time = timeToShipItEnd;
+                clock = $('.clock').FlipClock({
+                    clockFace: 'HourlyCounter'
+                    ,autoStart: false
+                });
+            }
+            clock.setTime(time);
             clock.setCountdown(true);
             clock.start();
+
+            setInterval(function(){
+                if(Math.floor(((new Date(2015, 0, 23, 13)).getTime() - (new Date()).getTime())/1000) == 0) {
+                    clock.stop();
+                    clock = $('.clock').FlipClock({
+                        clockFace: 'HourlyCounter'
+                        ,autoStart: false
+                    });
+                    clock.setTime(Math.floor(((new Date(2015, 0, 24, 13)).getTime() - (new Date()).getTime())/1000));
+                    clock.setCountdown(true);
+                    clock.start();
+                }
+                else if (Math.floor(((new Date(2015, 0, 24, 13)).getTime() - (new Date()).getTime())/1000) == -2){
+                    clock.stop();
+                    $('.clock').hide();
+                }
+            }, 1000);
         });
 
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
