@@ -1235,6 +1235,38 @@ border-radius: 50px;
 #ideas .error {
   color: #F00;
 }
+.stream-container {
+  margin-top: 3em;
+  float: left;
+}
+.stream-container.hidden {
+  display:none;
+}
+.stream {
+  min-width: 600px;
+  width: 75%;
+  min-height: 400px;
+}
+.head-text.right{
+  float:right;
+}
+@media screen and (max-width: 1200px){ 
+  .stream-container {
+    margin-top: 0;
+    float: none;
+  }
+  .stream {
+    min-width: 400px;
+    width: 75%;
+    min-height: 350px;
+  }
+  .head-text{
+    float:none;
+  }
+  .head-text .fa{
+    display:none;
+  }
+}
 @media screen and (max-width: 640px) {
   header h1 {
     font-size:50px;

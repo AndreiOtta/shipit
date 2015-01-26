@@ -86,13 +86,19 @@
         <section id="presentation">
             <div class="container">
                 <div class="row" style="text-align:center;margin-top:15em;">
-                    <div class="tp-caption large_white_bold scrollpoint sp-effect3">
-                        <i class="fa fa-rocket fa-5x"></i> 
-                        <h1>ShipIt Day</h1>
+                    <div class="stream-container">
+                        <iframe class="stream" src="http://www.youtube.com/embed/BqSwaOvt7bw" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <div class="tp-caption large_white_light scrollpoint sp-effect3">
-                        <h3>How far will you go?</h3>
+                    <div class="head-text right">
+                        <div class="tp-caption large_white_bold scrollpoint sp-effect3">
+                            <i class="fa fa-rocket fa-5x"></i>
+                            <h1>ShipIt Day</h1>
+                        </div>
+                        <div class="tp-caption large_white_light scrollpoint sp-effect3">
+                            <h3>How far will you go?</h3>
+                        </div>
                     </div>
+                    <div style="clear:both"></div>
                     <div class="clock large_white_light scrollpoint sp-effect3" style="margin-top: 6em"></div>
                 </div>
             </div>
@@ -675,9 +681,18 @@
                     ,autoStart: false
                 });
             }
-            clock.setTime(time);
-            clock.setCountdown(true);
-            clock.start();
+            if(time > 0)
+            {
+                clock.setTime(time);
+                clock.setCountdown(true);
+                clock.start();
+            }
+            else {
+                clock.stop();
+                $clock.hide();
+                $('.stream-container').addClass('hidden');
+                $('.head-text').removeClass('right');
+            }
 
             setInterval(function(){
                 if(Math.floor(((new Date(2015, 0, 23, 13)).getTime() - (new Date()).getTime())/1000) == 0) {
@@ -689,10 +704,14 @@
                     clock.setTime(Math.floor(((new Date(2015, 0, 24, 13)).getTime() - (new Date()).getTime())/1000));
                     clock.setCountdown(true);
                     clock.start();
+                    $('.stream-container').removeClass('hidden');
+                    $('.head-text').addClass('right');
                 }
                 else if (Math.floor(((new Date(2015, 0, 24, 13)).getTime() - (new Date()).getTime())/1000) == -2){
                     clock.stop();
                     $('.clock').hide();
+                    $('.stream-container').addClass('hidden');
+                    $('.head-text').removeClass('right');
                 }
             }, 1000);
         });
