@@ -3,7 +3,7 @@
 <!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
 <!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
 <!--[if gt IE 8]><!-->
-<html lang="en" class="no-js" data-ng-app="shipit">
+<html lang="en" class="no-js">
 <!--<![endif]-->
 
 <head>
@@ -86,10 +86,10 @@
         <section id="presentation">
             <div class="container">
                 <div class="row" style="text-align:center;margin-top:15em;">
-                    <div class="stream-container">
+                    <div class="stream-container hidden">
                         <iframe class="stream" src="http://www.youtube.com/embed/BqSwaOvt7bw" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <div class="head-text right">
+                    <div class="head-text">
                         <div class="tp-caption large_white_bold scrollpoint sp-effect3">
                             <i class="fa fa-rocket fa-5x"></i>
                             <h1>ShipIt Day</h1>
@@ -177,7 +177,16 @@
         </section>
         <section id="ideas">
             <div class="container">
-                <div data-ng-view=""></div>
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>Ideas</h1>
+                    <div class="divider"></div>
+                </div>
+                <div class="row" style="text-align:center;margin-top:17.5em;margin-bottom:17.5em">
+                    <div class="section-heading scrollpoint sp-effect5">
+                        <h2>Locked (for now...)</h2>
+                        <i class="fa fa-lock fa-5x"></i>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -190,273 +199,73 @@
                             <img src="img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
                             <!-- LAYERS -->
                             <!-- LAYER NR. 1 -->
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-sm hidden-md hidden-lg visible-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide1.png" alt="" class="slide-img">
-                            </div>
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide1_small.png" alt="" class="slide-img">
-                            </div>
-
-                            
-                            <div class="tp-caption large_white_light sft hidden-xs" data-x="center" data-y="top" data-hoffset="0" data-voffset="100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
-                                Got an idea? <i class="fa fa-cogs"></i>
-                            </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 Got an idea?
                             </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 <i class="fa fa-cogs fa-5x"></i>
                             </div>
                         </li>
                         <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
                             <img src="img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-sm hidden-md hidden-lg visible-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide2.png" alt="" class="slide-img">
-                            </div>
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide2_small.png" alt="" class="slide-img">
-                            </div>
-
-                            
-                            <div class="tp-caption large_white_light sft hidden-xs" data-x="center" data-y="top" data-hoffset="0" data-voffset="100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
-                                Gather a team <i class="fa fa-group"></i>
-                            </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 Gather a team
                             </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 <i class="fa fa-group fa-5x"></i>
                             </div>
                         </li>
                         <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
                             <img src="img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-sm hidden-md hidden-lg visible-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide3.png" alt="" class="slide-img">
-                            </div>
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide3_small.png" alt="" class="slide-img">
-                            </div>
-
-                            
-                            <div class="tp-caption large_white_light sft hidden-xs" data-x="center" data-y="top" data-hoffset="0" data-voffset="100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
-                                Try to make it work <i class="fa fa-wrench"></i>
-                            </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 Try to make it work
                             </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 <i class="fa fa-wrench fa-5x"></i>
                             </div>
                         </li>
                         <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
                             <img src="img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-sm hidden-md hidden-lg visible-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide4.png" alt="" class="slide-img">
-                            </div>
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide4_small.png" alt="" class="slide-img">
-                            </div>
-
-                            
-                            <div class="tp-caption large_white_light sft hidden-xs" data-x="center" data-y="top" data-hoffset="0" data-voffset="100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
-                                Struggle... <i class="fa fa-puzzle-piece"></i>
-                            </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 Struggle...
                             </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 <i class="fa fa-puzzle-piece fa-5x"></i>
                             </div>
                         </li>
                         <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
                             <img src="img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-sm hidden-md hidden-lg visible-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide5.png" alt="" class="slide-img">
-                            </div>
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide5_small.png" alt="" class="slide-img">
-                            </div>
-
-                            
-                            <div class="tp-caption large_white_light sft hidden-xs" data-x="center" data-y="top" data-hoffset="0" data-voffset="100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
-                                Things might break <i class="fa fa-bug"></i>
-                            </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 Things might break
                             </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 <i class="fa fa-bug fa-5x"></i>
                             </div>
                         </li>
                         <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
                             <img src="img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-sm hidden-md hidden-lg visible-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide6.jpg" alt="" class="slide-img">
-                            </div>
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide6_small.jpg" alt="" class="slide-img">
-                            </div>
-
-                            
-                            <div class="tp-caption large_white_light sft hidden-xs" data-x="center" data-y="top" data-hoffset="0" data-voffset="100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
-                                You might get tired <i class="fa fa-coffee"></i>
-                            </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 You might get tired
                             </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 <i class="fa fa-coffee fa-5x"></i>
                             </div>
                         </li>
                         <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
                             <img src="img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-sm hidden-md hidden-lg visible-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide7.png" alt="" class="slide-img">
-                            </div>
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide7_small.png" alt="" class="slide-img">
-                            </div>
-
-                            
-                            <div class="tp-caption large_white_light sft hidden-xs" data-x="center" data-y="top" data-hoffset="0" data-voffset="100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
-                                Get innovative! <i class="fa fa-lightbulb-o"></i>
-                            </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 Get innovative!
                             </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 <i class="fa fa-lightbulb-o fa-5x"></i>
                             </div>
                         </li>
                         <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
                             <img src="img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-sm hidden-md hidden-lg visible-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide8.jpg" alt="" class="slide-img">
-                            </div>
-                            <div class="tp-caption lfb fadeout hidden-xs hidden-xl"
-                                data-x="center"
-                                data-y="center"
-                                data-hoffset="0"
-                                data-voffset="100"
-                                data-speed="1000"
-                                data-start="700"
-                                data-easing="Power4.easeOut">
-                                <img src="img/concept/slide8_small.jpg" alt="" class="slide-img">
-                            </div>
-
-                            
-                            <div class="tp-caption large_white_light sft hidden-xs" data-x="center" data-y="top" data-hoffset="0" data-voffset="100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
-                                In the end it's all worth it <i class="fa fa-child"></i>
-                            </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="-100" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 In the end it's all worth it
                             </div>
-                            <div class="tp-caption large_white_light sft visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
+                            <div class="tp-caption large_white_light sft visible-xs visible-xl" data-x="center" data-y="center" data-hoffset="0" data-voffset="300" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
                                 <i class="fa fa-child fa-5x"></i>
                             </div>
                         </li>
@@ -668,8 +477,10 @@
             });
             
             var time = 0;
-            var timeToShipItStart = Math.floor(((new Date(2015, 0, 23, 13)).getTime() - (new Date()).getTime())/1000);
-            var timeToShipItEnd = Math.floor(((new Date(2015, 0, 24, 13)).getTime() - (new Date()).getTime())/1000);
+            var startDate = new Date(2015, 10, 5, 13);
+            var endDate = new Date(2015, 10, 6, 13);
+            var timeToShipItStart = Math.floor((startDate.getTime() - (new Date()).getTime())/1000);
+            var timeToShipItEnd = Math.floor((endDate.getTime() - (new Date()).getTime())/1000);
             if (timeToShipItStart > 0) {
                 time = timeToShipItStart;
             }
@@ -695,19 +506,19 @@
             }
 
             setInterval(function(){
-                if(Math.floor(((new Date(2015, 0, 23, 13)).getTime() - (new Date()).getTime())/1000) == 0) {
+                if(timeToShipItStart == 0) {
                     clock.stop();
                     clock = $('.clock').FlipClock({
                         clockFace: 'HourlyCounter'
                         ,autoStart: false
                     });
-                    clock.setTime(Math.floor(((new Date(2015, 0, 24, 13)).getTime() - (new Date()).getTime())/1000));
+                    clock.setTime(timeToShipItEnd);
                     clock.setCountdown(true);
                     clock.start();
                     $('.stream-container').removeClass('hidden');
                     $('.head-text').addClass('right');
                 }
-                else if (Math.floor(((new Date(2015, 0, 24, 13)).getTime() - (new Date()).getTime())/1000) == -2){
+                else if (timeToShipItEnd == -2){
                     clock.stop();
                     $('.clock').hide();
                     $('.stream-container').addClass('hidden');
@@ -716,23 +527,19 @@
             }, 1000);
         });
 
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-57674711-1', 'auto');
-      ga('send', 'pageview');
+      // ga('create', 'UA-57674711-1', 'auto');
+      // ga('send', 'pageview');
     </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-touch.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-cookies.js"></script>
-    <script src="js/main.js"></script>
-    <script src="controllers/AuthController.js"></script>
-    <script src="controllers/IdeaListController.js"></script>
-    <script src="controllers/IdeaController.js"></script>
 </body>
 
 </html>
