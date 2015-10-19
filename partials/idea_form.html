@@ -13,20 +13,28 @@
                     <div class="form-group">
                         <textarea cols="30" rows="10" class="form-control" style="margin: 0px -2px 0px 0px" placeholder="Give a short description of your idea. Keep in mind, people will back you and join your team based on this..." data-ng-model="formModel.description"></textarea>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Role name" data-ng-model="formModel.roleName" data-ng-enter="saveRole()" />
-                        <input type="text" class="form-control" placeholder="Role name" data-ng-model="formModel.roleCount" />
-                    	<button class="btn btn-primary btn-lg" data-ng-click="saveRole()"><i class="fa fa-plus"></i>&nbsp;Add role</button>
+                	<h3 data-ng-if="!inEditMode">Does your idea require some specific roles? If yes, add some below...</h3>
+                	<h3 data-ng-if="inEditMode">Add (more) roles or change one by selecting it from below...</h3>
+                    <div class="form-group row">
+                        <div class="group-member col-xs-12 col-sm-12 col-md-6"><input type="text" class="form-control" placeholder="Role name (ex: Web Dev, DB guy)" data-ng-model="formModel.roleName" data-ng-enter="saveRole()" /></div>
+                        <div class="group-member col-xs-12 col-sm-8 col-sm-offset-2 col-md-3 col-md-offset-0"><input type="text" class="form-control" placeholder="Spots needed" data-ng-model="formModel.roleCount" /></div>
+                    	<div class="group-member col-xs-12 col-sm-12 col-md-3"><button class="btn btn-primary btn-lg" data-ng-click="saveRole()"><i class="fa fa-plus"></i>&nbsp;Add role</button></div>
                     </div>
                     <div class="form-group">
-                		<h2>Roles</h2>
-                    	<ul class="roleContainer">
-                    		<li data-ng-repeat="role in formModel.roles" data-ng-class="role.roleCount > 0 ? 'open' : 'taken'" data-ng-click="editRole(role)">
-                    			<h3>{{ role.roleName }}: {{ role.roleMembers.length }}/{{ role.roleCount }} spots filled</h3>
-                    			<span class="spot" data-ng-repeat="roleMember in role.roleMembers"><label>{{ roleMember.User.Name }}</label><i class="fa fa-close" data-ng-click="removeRoleMember(role, roleMember)"></i></span>
-                    			<span class="empty spot" data-ng-repeat="spot in getEmptySpots(role)"></span>
-                    		</li>
+                    	<div class="roleContainer">
+                    		<div class="role" data-ng-repeat="role in formModel.roles" data-ng-class="role.roleCount > 0 ? 'open' : 'taken'" data-ng-click="editRole(role)" data-ng-show="formModel.roles && formModel.roles.length > 0">
+                    			<h4 class="role-header">{{ role.roleName }}: {{ role.roleMembers.length }}/{{ role.roleCount }} spots filled</h4>
+                    			<div class="role-smexify"></div>
+                    			<div class="role-members left-align">
+                    				<span class="spot" data-ng-repeat="roleMember in role.roleMembers">{{ roleMember.User.Name }}&nbsp;&nbsp;&nbsp;<i class="fa fa-times" data-ng-click="removeRoleMember(role, roleMember)"></i></span>
+                    				<span class="empty spot" data-ng-repeat="spot in getEmptySpots(role)">Empty</span>
+                    			</div>
+                    		</div>
+                    		<!-- <div class="role"><h4 class="role-header">Test</h4><div class="role-smexify"></div><div class="role-members left-align"><span class="spot">test1<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span></div></div>
+                    		<div class="role"><h4 class="role-header">Test</h4><div class="role-smexify"></div><div class="role-members left-align"><span class="spot">test1<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="empty spot">Empty</span></div></div>
+                    		<div class="role"><h4 class="role-header">Test</h4><div class="role-smexify"></div><div class="role-members left-align"><span class="spot">test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span></div></div> -->
                     	</div>
+                    	<i data-ng-show="!formModel.roles || formModel.roles.length == 0">None added.</i>
                     </div>
                     <button class="btn btn-primary btn-lg" data-ng-click="goto_home()"><i class="fa fa-arrow-left"></i>&nbsp;Back to ideas</button>
                     <button type="submit" class="btn btn-primary btn-lg" data-ng-click="saveIdea()"><i class="fa {{ inEditMode && 'fa-save' || 'fa-rocket' }}"></i>&nbsp;{{ inEditMode && 'Save idea' || 'Submit idea' }}</button>

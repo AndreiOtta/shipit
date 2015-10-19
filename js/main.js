@@ -6,42 +6,42 @@ shipitapp.config(function ($routeProvider){
 		.when('/',
 		{
 			controller: 'IdeaListController',
-			templateUrl: '/partials/idea_list.html'
+			templateUrl: 'partials/idea_list.html'
 		})
 		.when('/help',
 		{
 			controller: 'IdeaListController',
-			templateUrl: '/partials/help.html'
+			templateUrl: 'partials/help.html'
 		})
 		.when('/login',
 		{
 			controller: 'AuthController',
-			templateUrl: '/partials/login.html'
+			templateUrl: 'partials/login.html'
 		})
 		.when('/register',
 		{
 			controller: 'AuthController',
-			templateUrl: '/partials/register.html'
+			templateUrl: 'partials/register.html'
 		})
 		.when('/changepass',
 		{
 			controller: 'AuthController',
-			templateUrl: '/partials/changepass.html'
+			templateUrl: 'partials/changepass.html'
 		})
 		.when('/ideas/view/:ideaID',
 		{
 			controller: 'IdeaController',
-			templateUrl: '/partials/idea_view.html'
+			templateUrl: 'partials/idea_view.html'
 		})
 		.when('/ideas/submit',
 		{
 			controller: 'IdeaController',
-			templateUrl: '/partials/idea_form.html'
+			templateUrl: 'partials/idea_form.html'
 		})
 		.when('/ideas/change/:ideaID',
 		{
 			controller: 'IdeaController',
-			templateUrl: '/partials/idea_form.html'
+			templateUrl: 'partials/idea_form.html'
 		})
 		.otherwise({ redirectTo: '/' });
 });

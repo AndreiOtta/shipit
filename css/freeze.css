@@ -1231,6 +1231,78 @@ border-radius: 50px;
 #ideas .list ul li.m1{
   background-position: 144.6%;
 }
+/*idea form*/
+#ideas .form-group .group-member{
+  display: inline-block;
+}
+#ideas .left-align {
+    text-align: left;
+}
+#ideas span.spot {
+    border: 2px solid #09B;
+    background-color: #6CD;
+    color: #FFF;
+    padding: 10px 30px 10px 15px;
+    display: inline-block;
+    webkit-border-radius: 3em;
+    -moz-border-radius: 3em;
+    -ms-border-radius: 3em;
+    -o-border-radius: 3em;
+    margin: 0 10px 10px 0;
+    border-radius: 3em;
+    min-width: 30%;
+    max-width: 50%;
+    word-wrap: break-word;
+    position: relative;
+}
+#ideas span.empty.spot {
+    border: 2px dashed #09B;
+    color: #09B;
+    background: initial;
+}
+#ideas i.spot-clear {
+    position: absolute;
+    top: calc(50% - 10px);
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+#ideas .role-header {
+    border: 2px solid #09B;
+    background-color: #09B;
+    color: #FFF;
+    padding: 10px 30px 10px 15px;
+    webkit-border-radius: 3em 3em 0 0;
+    -moz-border-radius: 3em 3em 0 0;
+    -ms-border-radius: 3em 3em 0 0;
+    -o-border-radius: 3em 3em 0 0;
+    border-radius: 3em 3em 0 0;
+    margin: 0;
+    width: 100%;
+    cursor: pointer;
+    word-wrap: break-word;
+}
+#ideas .role-members {
+    border: 2px solid #09B;
+    padding: 10px 0 10px 10px;
+    webkit-border-radius: 3em;
+    -moz-border-radius: 3em;
+    -ms-border-radius: 3em;
+    -o-border-radius: 3em;
+    border-radius: 3em;
+    background: #FFF;
+}
+#ideas .role-smexify {
+    height: 3em;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    background-color: #09B;
+}
+#ideas .role {
+    position: relative;
+    margin-bottom: 10px;
+}
 /*auth area*/
 #ideas .error {
   color: #F00;
@@ -1313,5 +1385,8 @@ border-radius: 50px;
   }
   #ideas .list ul li {
     background-image: none;
+  }
+  #ideas span.spot {
+    max-width: 95%;
   }
 }
