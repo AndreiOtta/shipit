@@ -27,12 +27,12 @@
                     			<div class="role-smexify"></div>
                     			<div class="role-members left-align">
                     				<span class="spot" data-ng-repeat="roleMember in role.roleMembers">{{ roleMember.User.Name }}&nbsp;&nbsp;&nbsp;<i class="fa fa-times" data-ng-click="removeRoleMember(role, roleMember)"></i></span>
-                    				<span class="empty spot" data-ng-repeat="spot in getEmptySpots(role)">Empty</span>
+                    				<span class="empty spot" data-ng-repeat="spot in getEmptySpots(role)" data-ng-click="assignSelectedBacker()">Empty</span>
                     			</div>
                     		</div>
-                    		<!-- <div class="role"><h4 class="role-header">Test</h4><div class="role-smexify"></div><div class="role-members left-align"><span class="spot">test1<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span></div></div>
+                    		<div class="role"><h4 class="role-header">Test</h4><div class="role-smexify"></div><div class="role-members left-align"><span class="spot">test1<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span></div></div>
                     		<div class="role"><h4 class="role-header">Test</h4><div class="role-smexify"></div><div class="role-members left-align"><span class="spot">test1<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="empty spot">Empty</span></div></div>
-                    		<div class="role"><h4 class="role-header">Test</h4><div class="role-smexify"></div><div class="role-members left-align"><span class="spot">test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span></div></div> -->
+                    		<div class="role"><h4 class="role-header">Test</h4><div class="role-smexify"></div><div class="role-members left-align"><span class="spot">test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="spot">test 2<i class="fa fa-times spot-clear"></i></span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span><span class="empty spot">Empty</span></div></div>
                     	</div>
                     	<i data-ng-show="!formModel.roles || formModel.roles.length == 0">None added.</i>
                     </div>
@@ -47,18 +47,33 @@
         </div>
     </div>
 </div>
-<div class="row" data-ng-if="inEditMode && formModel.backers.length > 0">
+<!-- <div class="row" data-ng-if="inEditMode && formModel.backers.length > 0"> -->
+<div class="row"><!-- test -->
 	<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
 		<h3>Backers</h3>
 	</div>
 	<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 backer list">
 		<ul class="backer-list">
-			<li data-ng-repeat="backer in formModel.backers | orderBy:'Id'" data-ng-class="backer.selected ? 'selected' : ''" data-ng-click="selectBacker(backer)">
+			<li data-ng-repeat="backer in formModel.backers | orderBy:'Id'" data-ng-class="backer.id == formModel.selectedBacker ? 'selected' : ''" data-ng-click="selectBacker(backer)">
 				<div class="row">
 					<span style="word-wrap:break-word;">{{ backer.User.Name }}</span>
-					<span data-ng-click="changeMembership(backer);$event.stopPropagation();" class="pull-right" style="cursor:pointer;"><i class="fa {{ backer.IsMember && 'fa-times-circle-o' || 'fa-check-circle-o' }}"></i>&nbsp;{{ backer.IsMember && 'Unpick' || 'Pick' }}</span>
 				</div>
 			</li>
+            <!-- <li data-ng-class="backer.id == formModel.selectedBacker ? 'selected' : ''" data-ng-click="selectBacker(backer)">
+                <div class="row">
+                    <span style="word-wrap:break-word;">TEst</span>
+                </div>
+            </li>
+            <li data-ng-class="backer.id == formModel.selectedBacker ? 'selected' : ''" data-ng-click="selectBacker(backer)">
+                <div class="row">
+                    <span style="word-wrap:break-word;">TEst</span>
+                </div>
+            </li>
+            <li data-ng-class="backer.id == formModel.selectedBacker ? 'selected' : ''" data-ng-click="selectBacker(backer)">
+                <div class="row">
+                    <span style="word-wrap:break-word;">TEst</span>
+                </div>
+            </li> -->
 		</ul>
 	</div>
 </div>

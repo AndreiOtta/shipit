@@ -1188,7 +1188,6 @@ border-radius: 50px;
   color: #FFF;
   border-radius: 30px;
   background-color: #09B;
-  background-image: url("/img/minion_team.png");
   background-position: 200%;
   background-size: 35%;
   background-repeat: no-repeat;
@@ -1210,27 +1209,6 @@ border-radius: 50px;
   background-color: #66cdcc;
   font-weight: bold;
 }
-#ideas .list ul li.m7{
-  background-position: right;
-}
-#ideas .list ul li.m6{
-  background-position: 106.8%;
-}
-#ideas .list ul li.m5{
-  background-position: 114.7%;
-}
-#ideas .list ul li.m4{
-  background-position: 121.7%;
-}
-#ideas .list ul li.m3{
-  background-position: 128.8%;
-}
-#ideas .list ul li.m2{
-  background-position: 135.9%;
-}
-#ideas .list ul li.m1{
-  background-position: 144.6%;
-}
 /*idea form*/
 #ideas .form-group .group-member{
   display: inline-block;
@@ -1240,7 +1218,7 @@ border-radius: 50px;
 }
 #ideas span.spot {
     border: 2px solid #09B;
-    background-color: #6CD;
+    background-color: #66cdcc;
     color: #FFF;
     padding: 10px 30px 10px 15px;
     display: inline-block;
@@ -1259,6 +1237,9 @@ border-radius: 50px;
     border: 2px dashed #09B;
     color: #09B;
     background: initial;
+}
+#ideas span.empty.spot:hover {
+    border: 2px solid #09B;
 }
 #ideas i.spot-clear {
     position: absolute;

@@ -9,10 +9,10 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 
 		clearScope();
 		
-		if (($location.path().indexOf('/ideas/change/') >= 0 || $location.path().indexOf('/ideas/submit') >= 0) && !CurrentUser.isLoggedIn()) {
-			$location.path('/login');
-			return;
-		};			
+		// if (($location.path().indexOf('/ideas/change/') >= 0 || $location.path().indexOf('/ideas/submit') >= 0) && !CurrentUser.isLoggedIn()) {
+		// 	$location.path('/login');
+		// 	return;
+		// };			
 
 		$scope.inEditMode = $location.path().indexOf('/change/') >= 0;
 		$scope.inViewMode = $location.path().indexOf('/view/') >= 0;
@@ -25,7 +25,7 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 			};
 			
 			//get idea and bind it
-			$http.get(server_name + '/projects/' + ideaID)
+			/*$http.get(server_name + '/projects/' + ideaID)
 			.success(function(data) {
 				$scope.selectedIdea = data;
 				$scope.owner = $.grep(data.ProjectUsers, function(user) { return user.IsOwner })[0];
@@ -51,7 +51,24 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 			.error(function(error){
 				clearScope();
 				$scope.goto_home();
-			});
+			});*/
+			var data = {
+				Name: 'Test Idea test',
+				Description: 'This is a test idea\nbla bla nla\n weeee',
+				ProjectUsers: [
+					{UserId: 1, User: { Name: 'Dude' }, IsOwner: false}, 
+					{UserId: 2, User: { Name: 'Bla dude' }, IsOwner: true}, 
+					{UserId: 3, User: { Name: 'Some other dude' }, IsOwner: false}, 
+					{UserId: 4, User: { Name: 'Last dude' }, IsOwner: false}
+				]
+			};
+			$scope.selectedIdea = data;
+			$scope.owner = {};
+			$scope.viewIdeaModel.title = data.Name;
+			$scope.viewIdeaModel.description = data.Description.replace(/\n/g,'<br/>');
+			$scope.viewIdeaModel.backers = $.grep(data.ProjectUsers, function(user) { return !user.IsOwner });
+			$scope.isCurrentUserOwner = true;
+			$scope.viewIdeaModel.owner = $.grep(data.ProjectUsers, function(user) { return user.IsOwner })[0].User.Name || '';
 		};
 	};
 
@@ -64,17 +81,15 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 	}
 
 	$scope.selectBacker = function(backer) {
-		if ($scope.inEditMode) {
-			if (!$scope.selectedBacker || $scope.selectedBacker.Id != backer.Id) {
-				angular.forEach($scope.changeIdeaModel.backers, function(item){
-					if (item.Id != backer.Id) {
-						item.selected = false;
-					};
-				});
-				$scope.selectedBacker = backer;
-			}
-			backer.selected = true;
-		};
+		if (!$scope.selectedBacker || $scope.selectedBacker.Id != backer.Id) {
+			angular.forEach($scope.changeIdeaModel.backers, function(item){
+				if (item.Id != backer.Id) {
+					item.selected = false;
+				};
+			});
+			$scope.selectedBacker = backer;
+		}
+		backer.selected = true;
 	}
 
 	$scope.changeMembership = function(backer) {
@@ -187,5 +202,65 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 
 	$scope.goto_home = function() {
 		$location.path('/');
+	}
+	
+
+	$scope.joinTeam = function() {
+		if (!$scope.UserLoggedIn) {
+			$location.path('/login');
+			return;
+		} 
+		else {
+			var idea = $scope.selectedIdea;
+			var isCurrentUserOwner = $.grep(idea.ProjectUsers, function(user){ return user.UserId == CurrentUser.id && user.IsOwner}).length > 0;
+			var isCurrentUserMember = $.grep(idea.ProjectUsers, function(user){ return user.UserId == CurrentUser.id}).length > 0;
+			if(isCurrentUserOwner || isCurrentUserMember) {
+				$scope.errorMsg = "You're already a member of the selected team";
+			}
+			else {
+				$http.post(server_name + '/projectusers', { IsOwner: false, IsMember: false, UserId: CurrentUser.id, ProjectId: idea.Id })
+				.success(function(data){
+					if(data > 0) {
+						getIdeas();
+						$scope.errorMsg = '';
+					}
+					else {
+						$scope.errorMsg = 'You have already joined this team';
+					}
+				})
+				.error(function(error){
+					$scope.errorMsg = 'Error in joining team';
+				});
+			}
+		}
+	}
+
+	$scope.leaveTeam = function() {
+		if (!$scope.UserLoggedIn) {
+			$location.path('/login');
+			return;
+		} 
+		else {
+			var idea = $scope.selectedIdea;
+			var isCurrentUserOwner = $.grep(idea.ProjectUsers, function(user){ return user.UserId == CurrentUser.id && user.IsOwner}).length > 0;
+			var isCurrentUserMember = $.grep(idea.ProjectUsers, function(user){ return user.UserId == CurrentUser.id}).length > 0;
+			if (isCurrentUserOwner) {
+				$scope.errorMsg = "You cannot leave the team until you transfer ownership to another member";
+			}
+			else if (!isCurrentUserMember) {
+				$scope.errorMsg = "You are not a member of the selected team";
+			}
+			else {
+				var projectUserId = $.grep(idea.ProjectUsers, function(user){ return user.UserId == CurrentUser.id})[0].Id;
+				$http.delete(server_name + '/projectusers/'+ projectUserId)
+				.success(function(data){
+					getIdeas();
+					$scope.errorMsg = '';
+				})
+				.error(function(error){
+					$scope.errorMsg = 'Error in leaving team';
+				});
+			}
+		}
 	}
 });
