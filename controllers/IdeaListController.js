@@ -35,7 +35,7 @@ shipitapp.controller('IdeaListController', function($scope, $http, $location, $c
 
 	$scope.getMemberCount = function(idea){
 		idea.ProjectUsers = idea.ProjectUsers || [];
-		return  idea.ProjectUsers.length <= 1 ? "1" : (idea.ProjectUsers.length >= 7 ? "7" : idea.ProjectUsers.length);
+		return  idea.ProjectUsers.length <= 1 ? "(1 member)" : "(" + idea.ProjectUsers.length + " members)";
 	}
 
 	$scope.selectIdea = function(idea) {
@@ -70,7 +70,7 @@ shipitapp.controller('IdeaListController', function($scope, $http, $location, $c
 				$scope.errorMsg = "You're already a member of the selected team";
 			}
 			else {
-				$http.post(server_name + '/projectusers', { IsOwner: false, IsMember: false, UserId: CurrentUser.id, ProjectId: idea.Id })
+				$http.post(server_name + '/projectusers', { IsOwner: false, UserId: CurrentUser.id, ProjectId: idea.Id })
 				.success(function(data){
 					if(data > 0) {
 						getIdeas();

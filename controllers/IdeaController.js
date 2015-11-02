@@ -77,30 +77,14 @@ shipitapp.controller('IdeaController', function($scope, $http, $location, $route
 		};
 	}
 
-	$scope.changeMembership = function(backer) {
-		if(!$scope.isCurrentUserOwner) {
-			$scope.goto_home();
-		}
-		else {
-			$http.put(server_name + '/projectusers/' + backer.Id, { Id: backer.Id, IsOwner: backer.IsOwner, IsMember: !backer.IsMember, UserId: backer.UserId, ProjectId: backer.ProjectId })
-			.success(function(data){
-				backer.IsMember = !backer.IsMember;
-				$scope.errorMsg = '';
-			})
-			.error(function(error){
-				$scope.errorMsg = 'Error in changing membership';
-			});
-		}	
-	}
-
 	$scope.changeOwner = function() {
 		if(!$scope.isCurrentUserOwner) {
 			$scope.goto_home();
 		}
 		else {
-			$http.put(server_name + '/projectusers/' + $scope.selectedBacker.Id, { Id: $scope.selectedBacker.Id, IsOwner: true, IsMember: $scope.selectedBacker.IsMember, UserId: $scope.selectedBacker.UserId, ProjectId: $scope.selectedBacker.ProjectId })
+			$http.put(server_name + '/projectusers/' + $scope.selectedBacker.Id, { Id: $scope.selectedBacker.Id, IsOwner: true, UserId: $scope.selectedBacker.UserId, ProjectId: $scope.selectedBacker.ProjectId })
 			.success(function(data){
-				$http.put(server_name + '/projectusers/' + $scope.owner.Id, { Id: $scope.owner.Id, IsOwner: false, IsMember: $scope.owner.IsMember, UserId: $scope.owner.UserId, ProjectId: $scope.owner.ProjectId })
+				$http.put(server_name + '/projectusers/' + $scope.owner.Id, { Id: $scope.owner.Id, IsOwner: false, UserId: $scope.owner.UserId, ProjectId: $scope.owner.ProjectId })
 				.success(function(data){
 					init();
 				})

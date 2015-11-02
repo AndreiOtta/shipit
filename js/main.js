@@ -1,5 +1,5 @@
 var shipitapp = angular.module("shipit", ['ngRoute', 'ngCookies']);
-var server_name = "http://shipit.tavara.ro/api";
+var server_name = "http://137.135.140.77/api";
 
 shipitapp.config(function ($routeProvider){
 	$routeProvider

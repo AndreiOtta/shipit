@@ -32,7 +32,6 @@
 			<li data-ng-repeat="backer in viewIdeaModel.backers | orderBy:'Id'">
 				<div class="row">
 					<span style="word-wrap:break-word;">{{ backer.User.Name }}</span>
-					<span class="pull-right" style="cursor:pointer;">{{ backer.IsMember && 'Team member' || ''}}</span>
 			</li>
 		</ul>
 	</div>

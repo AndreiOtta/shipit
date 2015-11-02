@@ -1,9 +1,9 @@
 <!doctype html>
-<!--[if lt IE 7]><html lang="en" class="no-js ie6"><![endif]-->
-<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
-<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
+<!--[if lt IE 7]><html lang="en" class="no-js ie6" data-ng-app="shipit"><![endif]-->
+<!--[if IE 7]><html lang="en" class="no-js ie7" data-ng-app="shipit"><![endif]-->
+<!--[if IE 8]><html lang="en" class="no-js ie8" data-ng-app="shipit"><![endif]-->
 <!--[if gt IE 8]><!-->
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-ng-app="shipit">
 <!--<![endif]-->
 
 <head>
@@ -57,7 +57,7 @@
                         </button>
                         <a class="navbar-brand" href="index.html">
                             <img src="img/accesa_logo.png" alt="" class="logo_home">
-                            <img src="img/logo-accesa-10.png" alt="" class="logo_scrolled">
+                            <img src="img/accesa_logo_registered_big_slogan.png" alt="" class="logo_scrolled">
                         </a>
                     </div>
 
@@ -91,11 +91,14 @@
                     </div>
                     <div class="head-text">
                         <div class="tp-caption large_white_bold scrollpoint sp-effect3">
-                            <i class="fa fa-rocket fa-5x"></i>
-                            <h1>ShipIt Day</h1>
+                            <img src="img/Logo-ShipIT-Day-TechInitiative_white.png"
                         </div>
                         <div class="tp-caption large_white_light scrollpoint sp-effect3">
-                            <h3>How far will you go?</h3>
+                            <h3>
+                                <img src="img/Made_in_Romania_Icon_white-on-transp.png" style="width:100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                Innovation. Made in Romania!
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/Made_in_Romania_Icon_white-on-transp.png" style="width:100px">
+                            </h3>
                         </div>
                     </div>
                     <div style="clear:both"></div>
@@ -150,8 +153,14 @@
                     <div class="row col-lg-6 col-md-12">
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="about-item scrollpoint sp-effect1">
-                                <h2>Evaluation committee</h2>
-                                <p>To be announced...</p>
+                                <h2>Evaluation board</h2>
+                                <br/><br/>
+                                <div><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Radu Tut - Digital Workplace</div>
+                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Cristian Tismanaru - Business Integration</div>
+                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Mihai Seulean - Support & Operations</div>
+                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Raluca Piteiu - Business Quality</div>
+                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Vasile Boris - E-commerce</div>
+                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Florin Pascaru - Cloud & Mobile</div>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12" >
@@ -167,16 +176,7 @@
         </section>
         <section id="ideas">
             <div class="container">
-                <div class="section-heading scrollpoint sp-effect3">
-                    <h1>Ideas</h1>
-                    <div class="divider"></div>
-                </div>
-                <div class="row" style="text-align:center;margin-top:17.5em;margin-bottom:17.5em">
-                    <div class="section-heading scrollpoint sp-effect5">
-                        <h2>Locked (for now...)</h2>
-                        <i class="fa fa-lock fa-5x"></i>
-                    </div>
-                </div>
+                <div data-ng-view=""></div>
             </div>
         </section>
 
@@ -278,30 +278,23 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3">
-                        <div class="about-item scrollpoint sp-effect1">
-                            <h2 style="text-align:center;">Monday, Oct <sup>26th</sup></h2>
-                                <div style="margin-top:3em; margin-bottom:3em"><i class="fa fa-clock-o"></i>&nbsp;EOD&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;&nbsp;&nbsp;Idea registration section will be open in portal.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3">
+                    <div class="col-sm-5 col-xs-12 col-sm-offset-1">
                         <div class="about-item scrollpoint sp-effect2">
-                            <h2 style="text-align:center;">Friday, Nov <sup>6th</sup></h2>
-                                <div style="margin-top:3em"><i class="fa fa-clock-o"></i>&nbsp;13:00 - 14:00&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;&nbsp;&nbsp;Kick-off speech by CEO / PM & Projects Check-in</div>
-                                <div style="margin-top:3em"><i class="fa fa-clock-o"></i>&nbsp;14:00&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;&nbsp;&nbsp;Start of ShipIt Day</div>
-                                <div style="margin-top:3em"><i class="fa fa-clock-o"></i>&nbsp;TBA&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;&nbsp;&nbsp;TBA</div>
+                            <h2>Friday, Nov <sup>6th</sup></h2>
+                                <div style="margin-top:3em"><i class="fa bold">13:00 - 14:00</i>&nbsp;&nbsp;&nbsp;Kick-off presentation & Projects check-in </div>
+                                <div style="margin-top:3em"><i class="fa bold">14:00</i>&nbsp;&nbsp;&nbsp;Start of ShipIt Day</div>
+                                <div style="margin-top:3em"><i class="fa bold">16:00</i>&nbsp;&nbsp;&nbsp;Passion meets coffee – Energy break provided by La Trasura</div>
+                                <div style="margin-top:3em"><i class="fa bold">19:00</i>&nbsp;&nbsp;&nbsp;Innovation recharger  – Pizza dinner</div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3" >
+                    <div class="col-sm-5 col-xs-12 col-sm-offset-1" >
                         <div class="about-item scrollpoint sp-effect1">
-                            <h2 style="text-align:center;">Saturday, Nov <sup>7th</sup></h2>
-                                <div style="margin-top:3em"><i class="fa fa-clock-o"></i>&nbsp;09:00&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;&nbsp;&nbsp;Breakfast</div>
-                                <div style="margin-top:3em"><i class="fa fa-clock-o"></i>&nbsp;13:00&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;&nbsp;&nbsp;End of ShipIt Day</div>
-                                <div style="margin-top:3em"><i class="fa fa-clock-o"></i>&nbsp;13:00 - 14:00&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>&nbsp;&nbsp;&nbsp;Project evaluation & Awards ceremony</div>
+                            <h2>Saturday, Nov <sup>7th</sup></h2>
+                                <div style="margin-top:3em"><i class="fa bold">09:00</i>&nbsp;&nbsp;&nbsp;Rise and shine – Coffee & Donuts Breakfast</div>
+                                <div style="margin-top:3em"><i class="fa bold">13:00</i>&nbsp;&nbsp;&nbsp;End of ShipIt Day</div>
+                                <div style="margin-top:3em"><i class="fa bold">13:00</i>&nbsp;&nbsp;&nbsp;See the stars shine at Projects presentation</div>
+                                <div style="margin-top:3em"><i class="fa bold">14:00</i>&nbsp;&nbsp;&nbsp;Evaluation results</div>
+                                <div style="margin-top:3em"><i class="fa bold">14:00</i>&nbsp;&nbsp;&nbsp;Awards, champagne and cake – so richly deserved!</div>
                         </div>
                     </div>
                 </div>
@@ -480,8 +473,8 @@
                 </div>
                 <div class="row logos">
                     <div class="col-md-6 col-sm-9 col-xs-11 col-md-offset-4 col-sm-offset-3 col-xs-offset-1" >
-                        <span class="powered-by scrollpoint sp-effect5">Powered by: </span>
-                        <img src="img/TechInitiative-negru.png" class="img-responsive scrollpoint sp-effect5 tech-logo" alt="">
+                        <span class="powered-by scrollpoint sp-effect5">Part of: </span>
+                        <img src="img/TechLeague-color.png" class="img-responsive scrollpoint sp-effect5 tech-logo" alt="">
                     </div>
                 </div>
             </div>
@@ -520,8 +513,8 @@
             });
             
             var time = 0;
-            var startDate = new Date(2015, 10, 5, 13);
-            var endDate = new Date(2015, 10, 6, 13);
+            var startDate = new Date(2015, 10, 6, 13);
+            var endDate = new Date(2015, 10, 7, 13);
             var timeToShipItStart = Math.floor((startDate.getTime() - (new Date()).getTime())/1000);
             var timeToShipItEnd = Math.floor((endDate.getTime() - (new Date()).getTime())/1000);
             if (timeToShipItStart > 0) {
@@ -583,6 +576,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-touch.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular-cookies.js"></script>
+    <script src="js/main.js"></script>
+    <script src="controllers/AuthController.js"></script>
+    <script src="controllers/IdeaListController.js"></script>
+    <script src="controllers/IdeaController.js"></script>
 </body>
 
 </html>
