@@ -86,23 +86,23 @@
         <section id="presentation">
             <div class="container">
                 <div class="row" style="text-align:center;margin-top:15em;">
-                    <div class="stream-container hidden">
-                        <iframe class="stream" src="http://www.youtube.com/embed/BqSwaOvt7bw" frameborder="0" allowfullscreen></iframe>
+                    <div class="stream-container">
+                        <iframe class="stream" width="600" height="400" src="https://www.youtube.com/embed/WLnPa8HANi8" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <div class="head-text">
+                    <div class="head-text right">
                         <div class="tp-caption large_white_bold scrollpoint sp-effect3">
-                            <img src="img/Logo-ShipIT-Day-TechInitiative_white.png"
+                            <img src="img/Logo-ShipIT-Day-TechInitiative_white.png" class="logo" >
                         </div>
-                        <div class="tp-caption large_white_light scrollpoint sp-effect3">
-                            <h3>
-                                <img src="img/Made_in_Romania_Icon_white-on-transp.png" style="width:100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                Innovation. Made in Romania!
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/Made_in_Romania_Icon_white-on-transp.png" style="width:100px">
-                            </h3>
-                        </div>
+                        <div class="clock large_white_light scrollpoint sp-effect3"></div>
                     </div>
                     <div style="clear:both"></div>
-                    <div class="clock large_white_light scrollpoint sp-effect3" style="margin-top: 6em"></div>
+                    <div class="tp-caption large_white_light scrollpoint sp-effect3" style="margin-top: 1em">
+                            <h4>
+                                <img src="img/Made_in_Romania_Icon_white-on-transp.png" style="width:10%">&nbsp;
+                                Innovation. Made in Romania.
+                                &nbsp;<img src="img/Made_in_Romania_Icon_white-on-transp.png" style="width:10%">
+                            </h4>
+                        </div>
                 </div>
             </div>
         </section>
@@ -156,18 +156,26 @@
                                 <h2>Evaluation board</h2>
                                 <br/><br/>
                                 <div><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Radu Tut - Digital Workplace</div>
-                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Cristian Tismanaru - Business Integration</div>
-                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Mihai Seulean - Support & Operations</div>
-                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Raluca Piteiu - Business Quality</div>
-                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Vasile Boris - E-commerce</div>
+                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Cristian Tismanaru - Business Integration & Reporting</div>
                                 <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Florin Pascaru - Cloud & Mobile</div>
+                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Hunor Kecseti - Scientific & Medical Software</div>
+                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Mihai Seulean - Support & Operations</div>
+                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Raluca Piteiu - Business Quality & Processes</div>
+                                <div style="margin-top:3em"><i class="fa fa-user fa-2x"></i>&nbsp;&nbsp;&nbsp;Vasile Boris - Commerce Solutions</div>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12" >
                             <div class="about-item scrollpoint sp-effect1">
                                 <h2>Evaluation criteria</h2>
-                                <br/><br/>
-                                <p>To be announced...</p>
+                                <br/>
+                                <ul class="event-how">
+                                    <li>Innovation</li>
+                                    <li>Usefulness</li>
+                                    <li>Business value</li>
+                                    <li>UX / Usability</li>
+                                    <li>Efficiency / Simplicity</li>
+                                    <li>Project Presentation (for extra points)</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -176,7 +184,27 @@
         </section>
         <section id="ideas">
             <div class="container">
-                <div data-ng-view=""></div>
+                <div class="section-heading scrollpoint sp-effect3">
+                    <h1>Evaluation Results</h1>
+                    <div class="divider"></div>
+                </div>
+                <div class="row main">
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 result-list">
+                        <ol>
+                            <li><span class="rank">Free Wi-Fi</span><span class="score">131 pts.</span></li>
+                            <li><span class="rank">Park It</span><span class="score">105 pts.</span></li>
+                            <li><span class="rank">#SignMeUp</span><span class="score">99 pts.</span></li>
+                            <li><span class="rank">Meet Simple</span><span class="score">97 pts.</span></li>
+                            <li><span class="rank">Portal traditii romanesti</span><span class="score">93 pts.</span></li>
+                            <li><span class="rank">Corporate news aggregator</span><span class="score">92 pts.</span></li>
+                            <li><span class="rank">Track my team</span><span class="score">91 pts.</span></li>
+                            <li><span class="rank">Codename: Lucy</span><span class="score">86 pts.</span></li>
+                            <li><span class="rank">Jocul Avioane</span><span class="score">70 pts.</span></li>
+                            <li><span class="rank">Intexticated</span><span class="score">67 pts.</span></li>
+                            <li><span class="rank">Bec baie ocupata etajul 4</span><span class="score">N/A</span></li>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -471,6 +499,23 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-12 col-md-offset-5 col-sm-offset-1 scrollpoint sp-effect1">
+                        <div class="media media-left feature">
+                            <a class="pull-left" href="#">
+                                <i class="fa fa-terminal fa-2x"></i>
+                            </a>
+                            <div class="media-body">
+                                <h3 class="media-heading">Ovidiu Cimpan</h3>
+                                <h5>
+                                    <a href="skype:ovidiu19871?chat"><i class="fa fa-skype fa-3x"></i></a>
+                                    <a href="mailto:ovidiu.cimpan@accesa.eu"><i class="fa fa-envelope fa-3x"></i></a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row logos">
                     <div class="col-md-6 col-sm-9 col-xs-11 col-md-offset-4 col-sm-offset-3 col-xs-offset-1" >
                         <span class="powered-by scrollpoint sp-effect5">Part of: </span>
@@ -537,8 +582,8 @@
             else {
                 clock.stop();
                 $('.clock').hide();
-                $('.stream-container').addClass('hidden');
                 $('.head-text').removeClass('right');
+                $('.stream-container').addClass('hidden');
             }
 
             setInterval(function(){
@@ -551,14 +596,14 @@
                     clock.setTime(timeToShipItEnd);
                     clock.setCountdown(true);
                     clock.start();
-                    $('.stream-container').removeClass('hidden');
                     $('.head-text').addClass('right');
+                    $('.stream-container').removeClass('hidden');
                 }
                 else if (timeToShipItEnd == -2){
                     clock.stop();
                     $('.clock').hide();
-                    $('.stream-container').addClass('hidden');
                     $('.head-text').removeClass('right');
+                    $('.stream-container').addClass('hidden');
                 }
             }, 1000);
         });

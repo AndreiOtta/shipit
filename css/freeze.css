@@ -1209,6 +1209,39 @@ border-radius: 50px;
   background-color: #66cdcc;
   font-weight: bold;
 }
+#ideas .result-list ol {
+  -webkit-padding-start: 0px;
+}
+#ideas .result-list li {
+  counter-increment: step-counter;
+  padding: 10px;
+  color: #FFF;
+  border-radius: 30px;
+  background-color: #09B;
+  background-position: 200%;
+  background-size: 35%;
+  background-repeat: no-repeat;
+  margin-bottom: 10px;
+  font-size: 22px;
+  padding-right: 160px;
+}
+#ideas .result-list li:before {
+  content: counter(step-counter); 
+  margin-right: 5px; 
+  font-size: 80%; 
+  background-color: #09B; 
+  color: white; 
+  font-weight: bold; 
+  padding: 3px 8px; 
+  border-radius: 3px;
+}
+#ideas .result-list .rank {
+  word-wrap: break-word;
+}
+#ideas .result-list .score {
+  position: absolute;
+  right: 25px;
+}
 /*auth area*/
 #ideas .error {
   color: #F00;
@@ -1227,6 +1260,19 @@ border-radius: 50px;
 }
 .head-text.right{
   float:right;
+  width:48%;
+}
+.head-text .logo {
+  width: 75%;
+}
+.head-text.right .logo{
+  width: 100%;
+}
+.head-text .clock{
+  margin-top: 0;
+}
+.head-text.right .clock {
+  margin-top: 6em;
 }
 .bold {
   font-weight: bold;
