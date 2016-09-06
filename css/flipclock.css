@@ -19,7 +19,7 @@
   color: #ccc; }
 
 .flip-clock-wrapper a:hover {
-  color: #fff; }
+  color: #ED1C24; }
 
 .flip-clock-wrapper ul {
   list-style: none; }
@@ -152,10 +152,10 @@
   z-index: 1;
   width: 100%;
   height: 200%;
-  color: #0AB;
-  text-shadow: 0 1px 2px #069;
+  color: #FFF;
+  text-shadow: 0 1px 2px #FFF;
   text-align: center;
-  background-color: #FFF;
+  background-color: #ED1C24;
   border-radius: 6px;
   font-size: 70px; }
 
@@ -169,7 +169,7 @@
 .flip-clock-wrapper ul.play li.flip-clock-before {
   z-index: 3; }
 
-.flip-clock-wrapper .flip {   box-shadow: 0 2px 5px #069; }
+.flip-clock-wrapper .flip {   box-shadow: 0 2px 5px #FFF; }
 
 .flip-clock-wrapper ul.play li.flip-clock-active {
   -webkit-animation: asd 0.5s 0.5s linear both;
@@ -198,8 +198,8 @@
 
 .flip-clock-divider .flip-clock-label {
   position: absolute;
-  top: -1.5em;
-  right: -86px;
+  top: 4em;
+  right: -95px;
   color: black;
   text-shadow: none; }
 
@@ -436,26 +436,32 @@
 
 .flip-clock-divider .flip-clock-label {
   font-size: 24px;
-  color: #FFF;
+  color: #ED1C24;
 }
 
 .flip-clock-divider.seconds .flip-clock-label { right: -114px; }
 .flip-clock-divider.minutes .flip-clock-label { right: -110px; }
 .flip-clock-divider.hours .flip-clock-label { right: -102px; }
-.flip-clock-dot { background: #FFF; }
+.flip-clock-dot { background: #ED1C24; }
 
 @media screen and (max-width: 640px) {
 
   .clock { margin: 0 auto; display: block; width: 340px; }
   
+  .navbar.scrolled .flip-clock-wrapper .flip { box-shadow: 0 2px 5px #FFF; }
+  .flip-clock-wrapper .flip { box-shadow: 0 2px 5px #F00; }
+  .navbar.scrolled .flip-clock-wrapper ul { background: #FFF; color: #ED1C24; }
   .flip-clock-wrapper ul { height: 50px; line-height: 50px; }
   .flip-clock-wrapper ul li a div.up:after { top: 24px; }
+  .navbar.scrolled .flip-clock-divider { color: #FFF; }
   .flip-clock-divider { height: 50px; }
+  .navbar.scrolled .flip-clock-dot { background: #FFF; color: #ED1C24;}
   .flip-clock-dot { height: 6px; width: 6px; left: 7px;}
   .flip-clock-dot.top { top: 17px; }
   .flip-clock-dot.bottom { bottom: 8px; }
   
-  .flip-clock-divider .flip-clock-label { font-size: 16px; }
+  .navbar.scrolled .flip-clock-divider .flip-clock-label { color: #FFF; }
+  .flip-clock-divider .flip-clock-label { font-size: 16px; right:-66px; }
   .flip-clock-divider.hours .flip-clock-label { right: -66px; }
   .flip-clock-divider.minutes .flip-clock-label { right: -78px; }
   .flip-clock-divider.seconds .flip-clock-label { right: -78px; }
