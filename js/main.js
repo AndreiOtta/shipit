@@ -1,5 +1,5 @@
 var shipitapp = angular.module("shipit", ['ngRoute', 'ngCookies']);
-var server_name = "http://10.115.8.192/api";
+var server_name = "http://shipitapi.accesa.eu:8855/api";
 
 shipitapp.config(function ($routeProvider){
 	$routeProvider

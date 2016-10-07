@@ -49,7 +49,7 @@
     <header>
         
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-                <div class="container">
+                <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -64,6 +64,8 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                         <ul class="nav navbar-nav navbar-right">
+                            <li class="live hidden"><a href="#live">Live Now</a>
+                            </li>
                             <li><a href="#presentation" class="top">Top</a>
                             </li>
                             <li><a href="#event">Event Info</a>
@@ -82,6 +84,36 @@
                 </div>
                 <!-- /.container-->
         </nav>
+
+        <section id="live" class="hidden">
+            <div class="container">
+                <div class="section-heading scrollpoint sp-effect3" style="margin-top:12em; margin-bottom: 5em;">
+                    <h1>Live Now!</h1>
+                    <div class="divider"></div>
+                </div>
+                <div class="row main">
+                    <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                        <div class="about-item idea scrollpoint sp-effect1">
+                            <iframe id="stream" width="100%" height="500px" src="https://www.youtube.com/embed/-lAp13exbLk?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="row voting hidden">
+                    <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+                        <div class="col-sm-4 col-xs-12 col-sm-offset-2" style="text-align:center;" >
+                            <div class="about-item vote-fb scrollpoint sp-effect3">
+                                <a href="https://www.facebook.com/groups/AccesaTeam" target="_blank"><button class="btn btn-primary btn-lg" style="margin-top:5px">Vote on Facebook</button></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12" style="text-align:center;">
+                            <div class="about-item vote-email scrollpoint sp-effect3">
+                                <a href="mailto:hello@tech-league.net?subject=ShipIt Vote&body=Hello, my favourite ShipIt project is ..."><button class="btn btn-primary btn-lg" style="margin-top:5px">Vote by E-mail</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="presentation">
             <div class="container">
                 <div class="row" style="margin-top:15em;">
@@ -103,6 +135,7 @@
 
 
     <div class="wrapper">
+
         <section id="event">
             <div class="container">
                 <div class="section-heading scrollpoint sp-effect3">
@@ -118,7 +151,9 @@
                                 <br/>
                                 <p>ShipIT Day is Accesa’s 24-hour event in which you and your team can become a ninja expert in delivering innovative ideas.</p>
                                 <br/>
-                                <p>What qualifies as a ShipIT idea? For this year’s edition - “ShipIT to Japan“, we aim to bring out the best ideas related to Digital Workplace projects, meaning technologies and ways of working that allow people to connect, collaborate, communicate and co-operate by using technology (without necessarily being together face to face). People’s productivity, engagement and working health sit at the very core of a complex digital workplace ecosystem. Transforming the <i>traditional</i> workplace into a <i>digital</i> one involves reinventing the working environment and breaking down the barriers between people, workplaces and technologies, and empowering their employees to be productive and creative wherever they are. As this area has known a fast development, several more innovations are already on their way: Google glass, iWatch, connected objects, electronic pens, 3D printing, Wi-Fi printing, curved screens and many more.  Clearly, there is no end to innovation, so bring out the <i>samurai</i> in you!</p>
+                                <p>What qualifies as a ShipIT idea? For this year’s edition - “ShipIT to Japan“, we aim to bring out the best ideas related to Digital Workplace projects, meaning technologies and ways of working that allow people to connect, collaborate, communicate and co-operate by using technology.</p>
+                                <br/>
+                                <p>In short, we’re focusing on ideas that are meant to facilitate innovative and flexible working practices (i.e: Trello, AIMA, Outlook etc.).</p>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12" >
@@ -364,6 +399,12 @@
 
     <script>
         var clock;
+        var startDate = new Date(2016, 9, 7, 13);
+        var endDate = new Date(2016, 9, 8, 13);
+        var juryEndDate = new Date(2016, 9, 8, 16);
+        var streamEndDate = new Date(2016, 9, 8, 17, 30);
+        var timeToShipItStart, timeToShipItEnd, juryEnd, livestreamEnd;
+
         $(document).ready(function() {
             appMaster.preLoader();
 
@@ -374,10 +415,10 @@
             });
             
             var time = 0;
-            var startDate = new Date(2016, 9, 7, 13);
-            var endDate = new Date(2016, 9, 8, 13);
-            var timeToShipItStart = Math.floor((startDate.getTime() - (new Date()).getTime())/1000);
-            var timeToShipItEnd = Math.floor((endDate.getTime() - (new Date()).getTime())/1000);
+            //var startDate = new Date(2016, 9, 7, 13);
+
+            recompute();
+
             if (timeToShipItStart > 0) {
                 time = timeToShipItStart;
             }
@@ -388,6 +429,11 @@
                     clockFace: 'HourlyCounter'
                     ,autoStart: false
                 });
+
+                $('#live').removeClass('hidden');
+                $('.live').removeClass('hidden');
+                $('.top').addClass('hidden');
+                document.getElementById('stream').contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
             }
             if(time > 0)
             {
@@ -398,11 +444,21 @@
             else {
                 clock.stop();
                 $('.clock').hide();
-                //$('.head-text').removeClass('right');
-                //$('.stream-container').addClass('hidden');
+                if (juryEnd > 0) {
+                    $('.voting').removeClass('hidden');
+                }
+                else if (livestreamEnd <= 0) {
+                    $('#live').addClass('hidden');
+                    $('.live').addClass('hidden');
+                    $('.voting').addClass('hidden');
+                    $('.top').removeClass('hidden');
+                    document.getElementById('stream').contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*'); 
+                }
             }
 
             setInterval(function(){
+                recompute();
+
                 if(timeToShipItStart == 0) {
                     clock.stop();
                     clock = $('.clock').FlipClock({
@@ -413,16 +469,36 @@
                     clock.setCountdown(true);
                     clock.start();
                     //$('.head-text').addClass('right');
-                    //$('.stream-container').removeClass('hidden');
+                    $('#live').removeClass('hidden');
+                    $('.live').removeClass('hidden');
+                    $('.top').addClass('hidden');
+                    document.getElementById('stream').contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
                 }
-                else if (timeToShipItEnd == -2){
+                else if (timeToShipItEnd == 0){
                     clock.stop();
                     $('.clock').hide();
                     //$('.head-text').removeClass('right');
-                    //$('.stream-container').addClass('hidden');
+                    $('.voting').removeClass('hidden');
                 }
-            }, 1000);
+                else if (juryEnd == 0) {
+                    $('.voting').addClass('hidden');
+                }
+                else if (livestreamEnd == 0) {
+                    $('#live').addClass('hidden');
+                    $('.live').addClass('hidden');
+                    $('.top').removeClass('hidden');
+                    document.getElementById('stream').contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');    
+                }
+            }, 500);
         });
+
+        //recalculates time differences and flags
+        function recompute(){
+            timeToShipItStart = Math.floor((startDate.getTime() - (new Date()).getTime())/1000);
+            timeToShipItEnd = Math.floor((endDate.getTime() - (new Date()).getTime())/1000);
+            juryEnd = Math.floor((juryEndDate.getTime() - (new Date()).getTime())/1000);
+            livestreamEnd = Math.floor((streamEndDate.getTime() - (new Date()).getTime())/1000);
+        }
 
       // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
