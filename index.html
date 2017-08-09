@@ -66,7 +66,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="live hidden"><a href="#live">Live Now</a>
                             </li>
-                            <li><a href="#presentation" class="top">Top</a>
+                            <li><a href="#presentation" class="page-top">Top</a>
                             </li>
                             <li><a href="#event">Event Info</a>
                             </li>
@@ -400,10 +400,11 @@
     <script>
         var clock;
         var startDate = new Date(2016, 9, 7, 13);
+        var introEndDate = new Date(2016, 9, 7, 15);
         var endDate = new Date(2016, 9, 8, 13);
         var juryEndDate = new Date(2016, 9, 8, 16);
         var streamEndDate = new Date(2016, 9, 8, 17, 30);
-        var timeToShipItStart, timeToShipItEnd, juryEnd, livestreamEnd;
+        var timeToShipItStart, timeToShipItEnd, juryEnd, livestreamEnd, introEnd;
 
         $(document).ready(function() {
             appMaster.preLoader();
@@ -430,10 +431,12 @@
                     ,autoStart: false
                 });
 
-                $('#live').removeClass('hidden');
-                $('.live').removeClass('hidden');
-                $('.top').addClass('hidden');
-                document.getElementById('stream').contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                if(introEnd > 0) {
+                    $('#live').removeClass('hidden');
+                    $('.live').removeClass('hidden');
+                    $('.page-top').addClass('hidden');
+                    document.getElementById('stream').contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                }
             }
             if(time > 0)
             {
@@ -447,11 +450,17 @@
                 if (juryEnd > 0) {
                     $('.voting').removeClass('hidden');
                 }
-                else if (livestreamEnd <= 0) {
+                if (livestreamEnd > 0) {
+                    $('#live').removeClass('hidden');
+                    $('.live').removeClass('hidden');
+                    $('.page-top').addClass('hidden');
+                    document.getElementById('stream').contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                }
+                else {
                     $('#live').addClass('hidden');
                     $('.live').addClass('hidden');
                     $('.voting').addClass('hidden');
-                    $('.top').removeClass('hidden');
+                    $('.page-top').removeClass('hidden');
                     document.getElementById('stream').contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*'); 
                 }
             }
@@ -471,7 +480,7 @@
                     //$('.head-text').addClass('right');
                     $('#live').removeClass('hidden');
                     $('.live').removeClass('hidden');
-                    $('.top').addClass('hidden');
+                    $('.page-top').addClass('hidden');
                     document.getElementById('stream').contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
                 }
                 else if (timeToShipItEnd == 0){
@@ -479,21 +488,23 @@
                     $('.clock').hide();
                     //$('.head-text').removeClass('right');
                     $('.voting').removeClass('hidden');
+                    $('#live').removeClass('hidden');
+                    $('.live').removeClass('hidden');
+                    $('.page-top').addClass('hidden');
+                    document.getElementById('stream').contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
                 }
                 else if (juryEnd == 0) {
                     $('.voting').addClass('hidden');
                 }
                 else if (livestreamEnd == 0) {
-                    $('#live').addClass('hidden');
-                    $('.live').addClass('hidden');
-                    $('.top').removeClass('hidden');
-                    document.getElementById('stream').contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');    
+                    window.location.reload();   
                 }
             }, 500);
         });
 
         //recalculates time differences and flags
         function recompute(){
+            introEnd = Math.floor((introEndDate.getTime() - (new Date()).getTime())/1000);
             timeToShipItStart = Math.floor((startDate.getTime() - (new Date()).getTime())/1000);
             timeToShipItEnd = Math.floor((endDate.getTime() - (new Date()).getTime())/1000);
             juryEnd = Math.floor((juryEndDate.getTime() - (new Date()).getTime())/1000);

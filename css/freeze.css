@@ -1087,10 +1087,10 @@ header .navbar-default ul.navbar-nav li a:focus {
 header .navbar-default.scrolled ul.navbar-nav li a:focus{
   color: #ED1C24;
 }
-header .navbar-default ul.navbar-nav li a.top {
+header .navbar-default ul.navbar-nav li a.page-top {
   display:none;
 }
-header .navbar-default.scrolled ul.navbar-nav li a.top {
+header .navbar-default.scrolled ul.navbar-nav li a.page-top {
   display:block;
 }
 #credits i.fa, #agenda i.fa, #event i.fa, #ideas i.fa.blue{
